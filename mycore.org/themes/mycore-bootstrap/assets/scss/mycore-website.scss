@@ -1,6 +1,43 @@
-$theme-colors: (
-  "primary": #0074d9,
-  "danger": #ff4136
-);
+$dark: #343a40;
+
+
+$font-family-base:         "Open Sans", Helvetica, Arial, sans-serif;
+$headings-font-family:     "Sintony", Verdana, sans-serif;
+
+$link-color:                $dark;
+
+.mcr-footer {
+	font-size:0.8rem;
+	padding:5px 0px;
+}
+
+.mcr-footer a{
+	color:white;
+}
+
+
+.mcr-footer a:hover{
+	color:white;
+	text-decoration:underline;
+}
+
+.mcr-news{
+	font-size:0.9rem;
+	text-align:center;
+}
+
+.mcr-news h5{
+	font-size:1rem;
+}
+
+.mcr-news .author{
+	display:none;
+}
+.mcr-news .date{
+	display:none;
+}
+
+
+
 
 @import "../_webjars/bootstrap/4.1.3/scss/bootstrap.scss";
