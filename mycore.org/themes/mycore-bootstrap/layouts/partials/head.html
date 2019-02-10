@@ -1,0 +1,4 @@
+<base href="{{ .Site.BaseURL }}">
+{{ $options := (dict  "targetPath" "css/mycore-website.css" "outputStyle" "compressed" "enableSourceMap" true ) }}
+{{ $style := resources.Get "scss/mycore-website.scss" | resources.ToCSS $options }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">

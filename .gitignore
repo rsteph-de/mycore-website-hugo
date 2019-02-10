@@ -1,0 +1,6 @@
+/target/
+/bin/
+/mycore.org/themes/mycore-bootstrap/assets/_webjars
+/mycore.org/themes/mycore-bootstrap/static/_webjars
+/mycore.org/themes/minimal-bootstrap-hugo-theme
+/mycore.org/resources/_gen
