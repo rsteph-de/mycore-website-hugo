@@ -1,0 +1,55 @@
+main:
+  - identifier: "welcome"
+    name: "Start"
+    url: "/"
+    weight: -900
+  - identifier: features
+    name: Funktionen
+    url: /features/
+    weight: -800
+  -   parent: features
+      identifier: features_index
+      name: Übersicht
+      url: /features/index.html
+      weight: -810
+  -   parent: features
+      identifier: features_datamodel
+      name: Datenmodell
+      url: /features/datenmodell.html
+      weight: -820
+  -   parent: features
+      identifier: features_search
+      name: Suche 
+      url: /features/search.html
+      weight: -830
+  - identifier: applications
+    name: Beispiele
+    url: /applications/
+    weight: -700
+  -   parent: applications
+      identifier: applications_demo
+      name: Demo
+      url: /applications/index.html
+      weight: -710
+  -   parent: applications
+      identifier: applications_map
+      name: Karte
+      url: /applications/map.html
+      weight: -720
+  -   parent: applications
+      identifier: applications_list
+      name: "Anwendungen von A-Z"
+      url: /applications/list.html
+      weight: -730                        
+  - identifier: download
+    name: Download
+    url: /download/
+    weight: -600
+  - identifier: documentation
+    name: Dokumentation
+    url: /documentation/
+    weight: -500
+  - identifier: support
+    name: Organisation
+    url: /support/
+    weight: -400

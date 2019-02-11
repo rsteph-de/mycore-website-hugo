@@ -7,7 +7,29 @@
 	</div>
 	<div class="row" style="min-height:30px;background-image: url('/images/_site/background_dark_blue_30.png'); background-size:100% 100%;">
 		<div class="col" >
-			Menü
+			<nav class="navbar mcr-navbar-top navbar-expand-md float-right">
+				<div class="navbar-nav">
+					{{ range $.Site.Home.AllTranslations }}
+						<a class="nav-item nav-link"  href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+					{{ end }}
+				</div>
+			</nav>
+		
+			<nav class="navbar mcr-navbar-top navbar-expand-md">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavTop" aria-controls="navbarNavTop" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+ 			 </button>
+ 			 <div class="collapse navbar-collapse" id="navbarNavTop">
+    			<div class="navbar-nav">
+			
+		        {{ $currentPage := . }}
+		       	{{ range .Site.Menus.main }}
+						<a class='nav-item nav-link {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active {{ end }}'
+						href="{{ relLangURL .URL }}">{{ .Name }} </a>
+				{{ end }}
+				</div>
+				</div>
+			</nav>
 		</div>
 	</div>
 </div>

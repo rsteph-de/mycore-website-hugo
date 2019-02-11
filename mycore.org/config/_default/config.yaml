@@ -1,0 +1,44 @@
+baseURL: "http://www.mycore.org/"
+theme: "mycore-bootstrap"
+
+params:
+  description: "Some description"
+  contentBackgroundColor: "#fff"
+  contentTextColor: "#212529"
+  contentLinkColor: "#007bff"
+  contentLinkHoverColor: "#0056b3"
+  navbarBackgroundColor: "#212529"
+  navbarLinkColor: "rgba(255, 255, 255, 0.75)"
+  navbarLinkHoverColor: "rgba(255, 255, 255, 1)"
+  wrapperMaxWidth: "800px"
+  customDateFormat: "Jan 2, 2006"
+  customCodeStyle: true
+  customBlockquoteStyle: true
+  showPostSummary: false
+  googleAnalytics: "UA-123456789-1"
+  cookieConsent: true
+  includeBootstrapJs: false
+  faviconSafariPinnedTabColor: "#5bbad5"
+  faviconMsApplicationTileColor: "#da532c"
+  faviconThemeColor: "#ffffff"
+
+DefaultContentLanguage: de
+
+languages:
+    de:
+      params:
+        new_param: x
+      title: "MyCoRe Webseite"
+      description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
+      languageName: "Deutsch"
+      weight: 1
+    en:
+      params:
+        new_param: x
+      title: "MyCoRe Homepage"
+      description: "The Framework to present and manage digital contents."
+      languageName: "English"
+      weight: 2
+    
+taxonomies:
+  tag: "tags"
