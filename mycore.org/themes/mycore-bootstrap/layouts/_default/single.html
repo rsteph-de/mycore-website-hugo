@@ -1,0 +1,21 @@
+{{- define "main" -}}
+
+{{ $homepage := "Home" }}
+{{ with .Site.Menus.nav }}
+  {{ range first 1 . }}
+    {{ $homepage = .Name }}
+  {{ end }}
+{{ end }}
+<div class="container">
+  <div class="row">
+	<div class="col-3">
+	
+	</div>
+	<div class="col-9">
+		{{ .Content  }}	
+	</div>
+ </div>
+</div>
+
+
+{{- end -}}

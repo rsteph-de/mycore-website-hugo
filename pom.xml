@@ -16,6 +16,12 @@
       <artifactId>bootstrap</artifactId>
       <version>4.1.3</version>
     </dependency>
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>font-awesome</artifactId>
+      <version>5.7.1</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -45,7 +51,7 @@
             </goals>
             <configuration>
               <type>jar</type>
-              <includeArtifactIds>jquery,bootstrap</includeArtifactIds>
+              <includeArtifactIds>jquery,bootstrap,font-awesome</includeArtifactIds>
               <outputDirectory>${project.build.directory}/_webjars</outputDirectory>
             </configuration>
           </execution>
@@ -65,6 +71,9 @@
                     <include name="**/bootstrap.css" />
                     <include name="**/bootstrap.bundle.min.js" />
                     <include name="**/bootstrap.bundle.min.js.map" />
+                    <!-- font awesome -->
+                    <include name="**/font-awesome/*/css/all*.css" />
+                    <include name="**/font-awesome/*/webfonts/*" />
                   </fileset>
                 </copy>
                 <copy todir="${basedir}/mycore.org/themes/mycore-bootstrap/assets/_webjars">

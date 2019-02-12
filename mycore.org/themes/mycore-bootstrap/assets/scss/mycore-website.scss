@@ -6,6 +6,21 @@ $headings-font-family:     "Sintony", Verdana, sans-serif;
 
 $link-color:                $dark;
 
+p {
+	text-align:justify;
+}
+
+figure{
+	padding:15px 0px;
+	border:1px solid green;
+}
+figure h4{
+	font-family: $font-family-base;
+	font-size:.9rem;
+	text-align:center;
+	padding-top:15px;
+}
+
 .mcr-footer {
 	font-size:0.8rem;
 	padding:5px 0px;
@@ -53,6 +68,7 @@ $link-color:                $dark;
 	font-weight:bold;
 	text-decoration:underline;
 }
+
 
 
 @import "../_webjars/bootstrap/4.1.3/scss/bootstrap.scss";

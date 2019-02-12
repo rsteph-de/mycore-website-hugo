@@ -32,6 +32,7 @@ languages:
       description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
       languageName: "Deutsch"
       weight: 1
+      contentDir: content/de
     en:
       params:
         new_param: x
@@ -39,6 +40,7 @@ languages:
       description: "The Framework to present and manage digital contents."
       languageName: "English"
       weight: 2
+      contentDir: content/en
     
 taxonomies:
   tag: "tags"
