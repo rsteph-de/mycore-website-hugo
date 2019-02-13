@@ -10,6 +10,11 @@ p {
 	text-align:justify;
 }
 
+p a {
+	text-decoration:underline !important;
+	color: darkblue;
+}
+
 figure{
 	padding:15px 0px;
 	border:1px solid green;
