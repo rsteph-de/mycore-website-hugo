@@ -15,21 +15,21 @@ date = "2014-04-09"
 			<a class="sphereLink" href="features/index.html">
 				<img alt="Vielseitigkeit" class="sphere" rel="sphere_manysided" src="images/start/abbildung_vielseitig.jpg">
 				<h3>vielseitig</h3>
-				<p>für Repositorien, Online-Archive, Dokumentenserver uvm.</p>
+				<p class="text-center">für Repositorien, Online-Archive, Dokumentenserver uvm.</p>
 			</a>
 		</div>
 		<div class="col">
 			<a class="sphereLink" href="documentation/getting_started/../index.html">
 				<img alt="Anpassbarkeit" class="sphere" rel="sphere_adaptable" src="images/start/abbildung_anpassbar.jpg">
 				<h3>anpassbar</h3>
-				<p>mit eigenem Datenmodell, Suche, Layout zum eigenen Repository</p>
+				<p class="text-center">mit eigenem Datenmodell, Suche, Layout zum eigenen Repository</p>
 			</a>
 		</div>
 		<div class="col">
 			<a class="sphereLink" href="support/team.html">
 				<img alt="Nachhaltigkeit" class="sphere" rel="sphere_lasting" src="images/start/abbildung_nachhaltig.jpg">
 				<h3>nachhaltig</h3>
-				<p>seit mehr als 15 Jahren kontinuierliche Community-Entwicklung</p>
+				<p class="text-center">seit mehr als 15 Jahren kontinuierliche Community-Entwicklung</p>
 			</a>
 		</div>
 	</div>
