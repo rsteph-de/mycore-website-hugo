@@ -24,8 +24,8 @@
 			
 		        {{ $currentPage := . }}
 		       	{{ range .Site.Menus.main }}
-						<a class='nav-item nav-link {{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} active {{ end }}'
-						href="{{ relLangURL .URL }}">{{ .Name }} </a>
+						<a class='nav-item nav-link {{ if or ($.IsMenuCurrent "main" .)  (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+						href="{{ relLangURL .URL }}">{{ .Name }}</a>
 				{{ end }}
 				</div>
 				</div>

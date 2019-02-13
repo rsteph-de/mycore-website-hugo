@@ -5,17 +5,17 @@ main:
     weight: -900
   - identifier: features
     name: Funktionen
-    url: /features/
+    url: /features
     weight: -800
   -   parent: features
       identifier: features_index
       name: Übersicht
-      url: /features/index.html
+      url: /features
       weight: -810
   -   parent: features
       identifier: features_datamodel
       name: Datenmodell
-      url: /features/datenmodell.html
+      url: /features/datamodel
       weight: -820
   -   parent: features
       identifier: features_search
