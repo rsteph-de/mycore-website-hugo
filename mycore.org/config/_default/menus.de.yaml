@@ -6,22 +6,37 @@ main:
   - identifier: features
     name: Funktionen
     url: /features
-    weight: -800
+    weight: -890
   -   parent: features
       identifier: features_index
       name: Übersicht
       url: /features
-      weight: -810
+      weight: -880
   -   parent: features
       identifier: features_datamodel
       name: Datenmodell
       url: /features/datamodel
-      weight: -820
+      weight: -870
   -   parent: features
       identifier: features_search
       name: Suche 
       url: /features/search.html
-      weight: -830
+      weight: -870
+  -     parent: features_search
+        identifier: features_search_simple
+        name: einfache Suche 
+        url: /features/search/simple
+        weight: -869
+  -     parent: features_search
+        identifier: features_search_complex
+        name: erweiterte Suche 
+        url: /features/search/complex
+        weight: -868
+  -     parent: features_search
+        identifier: features_search_expert
+        name: einfache Suche 
+        url: /features/search/complex
+        weight: -867                     
   - identifier: applications
     name: Beispiele
     url: /applications/
