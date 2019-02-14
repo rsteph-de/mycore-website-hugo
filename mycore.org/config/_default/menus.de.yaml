@@ -20,7 +20,7 @@ main:
   -   parent: features
       identifier: features_search
       name: Suche 
-      url: /features/search.html
+      url: /features/search
       weight: -870
   -     parent: features_search
         identifier: features_search_simple

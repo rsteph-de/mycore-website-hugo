@@ -22,6 +22,8 @@ params:
   faviconMsApplicationTileColor: "#da532c"
   faviconThemeColor: "#ffffff"
 
+pygmentsUseClasses: true
+
 DefaultContentLanguage: de
 
 languages:
