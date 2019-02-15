@@ -20,7 +20,7 @@ MIR-Anwendung noch die folgende Software:
 
 #### Download
 
-Informationen zum aktuellen Release und ein Changelog befinden sich im [Download-Bereich]({{< ref "/downloads/mir/mir_release_2018.md" >}}).
+Informationen zum aktuellen Release und ein Changelog befinden sich im [Download-Bereich]({{< ref "/download/mir/mir_release_2018.md" >}}).
 Bei Sonatype kann die aktuelle [MIR-Version](https://oss.sonatype.org/service/local/artifact/maven/content?r=snapshots&g=org.mycore.mir&a=mir-webapp&v=LATEST&e=war)
 (speichern als <code>mir.war</code>) heruntergeladen werden. Dieses kann mit dem Context 'mir' direkt in einen Servlet Container ausgeliefert (deployed) werden.
 
@@ -190,7 +190,7 @@ MCR.LayoutTransformerFactory.Default.Stylesheets=xsl/mir-myapp-layout.xsl
 ## Aktivierung der Selbst-Registrierung
 
 Um als Alternative zur Anmeldung auch eine Selbstregistrierung anzubieten, kann dies in der <code>realms.xml</code> im Verzeichnis <code>data</code>
-konfiguriert werden. Dazu muss der nachstehende Code ergänzt werden (siehe dazu auch die [hier verfügbare vollständige realms.xml)]({{< ref "/downloads/mir/realms.md" >}}).
+konfiguriert werden. Dazu muss der nachstehende Code ergänzt werden (siehe dazu auch die [hier verfügbare vollständige realms.xml)]({{< ref "/download/mir/realms.md" >}}).
 
 {{< highlight xml "linenos=table" >}}
 <realm id="registerUser" setable="false">
