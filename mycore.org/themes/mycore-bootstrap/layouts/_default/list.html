@@ -23,7 +23,7 @@
 					<ul>
 						{{ range .Children }}
 							<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
-							       href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
+							       href="{{ relLangURL .URL }}">{{ .Name }}</a>
 							{{ if .HasChildren }}
 							<ul>
 								{{ range .Children }}
@@ -31,11 +31,11 @@
 									   href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
 								{{ end }}
 							</ul>
+							{{ end }}
 						{{ end }}
 					</ul>
+					{{ end }}
 					<hr />
-					{{ end }}
-					{{ end }}
 				{{ end }}
 			{{ end }}
 			
