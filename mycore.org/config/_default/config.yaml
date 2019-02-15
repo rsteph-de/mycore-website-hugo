@@ -44,6 +44,8 @@ languages:
       weight: 2
       contentDir: content/en
 
+summaryLength: 37
+
 permalinks:
   blog: /blog/:year/:month/:slug/
   

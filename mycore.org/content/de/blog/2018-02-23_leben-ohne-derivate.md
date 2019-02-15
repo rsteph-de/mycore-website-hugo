@@ -5,8 +5,6 @@ date: 2018-02-23
 
 draft: false
 
-description: Wie hängen Dateien und Metadaten bei MyCoRe zusammen? Welche Anforderungen gibt es? Brauchen wir Metadaten über Metadaten über Dateien eigentlich?...
-
 blog/authors: Thomas Scheffler
 blog/periods: 2018-02
 blog/categories: 
@@ -16,8 +14,6 @@ blog/tags:
 - Entwicklung
 
 ---
-
-# Was wäre ein Leben ohne Derivate?
 
 ## Was ist ein Derivat?
 

@@ -12,7 +12,5 @@ blog/categories:
 blog/tags:
  - "Alles wird gut"
 
-  
 ---
-# Mein erster Blogeintrag
-Alles wird gut ....
+Alles wird gut lautet das Motto von **MyCoRe**....

@@ -5,16 +5,12 @@ date: 2018-06-13
 
 draft: false
 
-description: Für das 2018.06 Release habe ich einen neuen Datei Upload entwickelt. Dieser basiert auf der WebkitEntry API und wird von Firefox, Chrome und Edge unterstützt. Für alle anderen Browser gibt es einen Fallback. Um den neuen Upload zu benutzen muss man die MyCoRe-Webtools einbinden. In die Seite mit dem...
-
 blog/authors: Sebastian Hofmann
 blog/periods: 2018-06
 blog/categories: 
 - HowTo
 
 ---
-
-# Datei Upload mit dem 2018.06 Release
 
 Für das 2018.06 Release habe ich einen neuen Datei Upload entwickelt. Dieser basiert auf der 
 [WebkitEntry](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitEntries#Browser_compatibility) API und wird von Firefox, Chrome und Edge unterstützt. Für alle anderen Browser gibt es einen Fallback.

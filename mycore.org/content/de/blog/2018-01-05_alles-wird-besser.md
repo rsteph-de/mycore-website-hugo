@@ -13,5 +13,4 @@ blog/tags:
  - "Alles wird gut"
 
 ---
-# Mein erster Blogeintrag
 Alles wird gut ....

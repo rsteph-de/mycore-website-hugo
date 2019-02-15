@@ -13,5 +13,5 @@ blog/tags:
  - "Alles wird gut"
  
 ---
-# Alles Gute im Neuen Jahr
+
 Alles wird gut ....
