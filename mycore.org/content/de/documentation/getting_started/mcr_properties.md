@@ -5,6 +5,8 @@ description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Konfiguration
 authors: Kathleen Neumann
 
+mcr_versions: ['2017.06','2018.06']
+
 ---
 
 # Konfiguration

@@ -1,9 +1,7 @@
 ---
 
-description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Funktionen
-categories:
-- Overview
+
 
 ---
 

@@ -58,12 +58,37 @@ main:
       weight: -730                        
   - identifier: download
     name: Download
-    url: /download/
+    url: /download
     weight: -600
   - identifier: documentation
     name: Dokumentation
-    url: /documentation/
+    url: /documentation
     weight: -500
+  -   parent: documentation 
+      identifier: getting_started
+      name: Mit MyCoRe Starten
+      url: /documentation/getting_started
+      weight: -490
+  -     parent: getting_started 
+        identifier: mir
+        name: Mir
+        url: /documentation/getting_started/mir
+        weight: -489
+  -     parent: getting_started 
+        identifier: skeleton
+        name: Skeleton
+        url: /documentation/getting_started/skeleton
+        weight: -488
+  -     parent: getting_started 
+        identifier: solr_7
+        name: Solr-Integration
+        url: /documentation/getting_started/solr_7
+        weight: -487
+  -     parent: getting_started 
+        identifier: mcr_properties
+        name: Konfiguration & Properties
+        url: /documentation/getting_started/mcr_properties
+        weight: -486    
   - identifier: support
     name: Organisation
     url: /support/

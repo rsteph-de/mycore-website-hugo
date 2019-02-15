@@ -1,0 +1,48 @@
+{{- define "main" -}}
+
+<div class="container">
+  <div class="row">
+	<div class="col-3">
+	 {{- partial "side_menu.html" . -}}
+	</div>
+	<div class="col-9">
+	    
+	    <div class="text-right">
+	    {{ range .Params.mcr_versions }}
+	     <span class="badge badge-primary">{{.}}</span>
+	    {{ end }}
+	    </div>
+	    <h1>{{ .Title | markdownify }}</h1>
+
+		
+			{{ $currentPage := . }}
+		    {{ range .Site.Menus.main }}
+				{{ if or ($.IsMenuCurrent "main" .)  (eq $currentPage.URL (print .URL "/"))}} 
+					<h5>Inhaltsverzeichnis</a></h5>
+					{{ if .HasChildren }}
+					<ul>
+						{{ range .Children }}
+							<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+							       href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
+							{{ if .HasChildren }}
+							<ul>
+								{{ range .Children }}
+								<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+									   href="{{ relLangURL .URL }}">{{ .Name }}</a></li>
+								{{ end }}
+							</ul>
+						{{ end }}
+					</ul>
+					<hr />
+					{{ end }}
+					{{ end }}
+				{{ end }}
+			{{ end }}
+			
+			
+		    {{ .Content  }}
+	</div>
+</div>
+</div>
+
+{{ end }}
