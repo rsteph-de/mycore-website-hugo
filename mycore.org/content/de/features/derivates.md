@@ -1,6 +1,5 @@
 ---
 
-date: "2012-04-06"
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Dateiverwaltung, Digitalisate und Video Streaming
 categories:
