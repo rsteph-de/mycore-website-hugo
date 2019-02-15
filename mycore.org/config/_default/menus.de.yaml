@@ -16,7 +16,7 @@ main:
                       
   - identifier: applications
     name: Beispiele
-    url: /applications/
+    url: /applications
     weight: -700
   -   parent: applications
       identifier: applications_demo
@@ -68,9 +68,9 @@ main:
         weight: -486    
   - identifier: support
     name: Organisation
-    url: /support/
+    url: /support
     weight: -400
   - identifier: blog
     name: BLOG
-    url: /blog/
+    url: /blog
     weight: -300

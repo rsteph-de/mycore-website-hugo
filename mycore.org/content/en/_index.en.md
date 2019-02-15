@@ -33,7 +33,7 @@ date = "2014-04-09"
 			</a>
 		</div>
 	</div>
-	<script src="/js/startpage.js" ></script>
+	<script src="js/startpage.js" ></script>
 	<style>
 		.mcr-well a{
 			color:white;
