@@ -1,0 +1,65 @@
+ {{ $currentPage := . }}
+
+<nav class="navbar mcr-navbar-side navbar-expand-md">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavSide" aria-controls="navbarNavSide" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+ 	</button>
+ 	<div class="collapse navbar-collapse" id="navbarNavSide">
+ 		<div>
+      		<h5><i class="fas fa-calendar-week pr-2"></i> Kalender</h5>
+			<ul style="list-style-type: none;padding-left: 0;">
+				{{ with .Site.GetPage "section" "blog" }}
+    				{{ range .Data.Pages.GroupByDate "2006" }}
+    					<li><h6> {{ .Key }} </h6>
+    						{{ $monthlyPages := .Pages.GroupByDate "2006-01" }}
+							{{ if ge (len $monthlyPages) 1 }}
+    							{{ range $monthlyPages.Reverse  }}
+    								<span class="pr-3">
+    									{{ range first 1 .Pages  }}
+    									 <a class='{{ if in $currentPage.URL (print "/" (.Date.Format "2006-01") "/")}}active{{ end }}'
+    									     href='/blog/periods/{{.Date.Format "2006-01"}}'>
+    									  	{{.Date.Format "Jan"}}
+    									  </a>
+    									{{ end }}
+    								</span>
+    							{{ end }}
+    					   	{{ end }}
+    					  </li>
+    				{{ end }}
+   				{{ end }}
+			</ul>
+
+			<h5><i class="fas fa-list-ul"></i> Kategorien</h5>
+			<ul class="pl-3">
+			{{/* instead of: 'range .Site.Taxonomies.authors' */}}
+			 {{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/categories"}}
+			 <li><a class='{{ if in $currentPage.URL (print "/blog/categories/" $taxonomy_term "/")}}active{{ end }}'
+			        href='/blog/categories/{{ $taxonomy_term }}'>
+			 	{{ $taxonomy_term }}</a>
+			 </li>
+			 {{ end }}
+        	</ul>
+
+      	
+			<h5><i class="fas fa-tags"></i> Tags</h5>
+			{{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/tags"}}
+			 <a class='mr-2 {{ if in $currentPage.URL (print "/blog/tags/" $taxonomy_term "/")}}active{{ end }}'
+			 	href='/blog/tags/{{ $taxonomy_term }}'>{{ $taxonomy_term }}</a>
+			 {{ end }}
+
+			<h5><i class="far fa-newspaper"></i> Aktuelles</h5>
+			{{ with .Site.GetPage "section" "blog" }}
+				<ul class="pl-0" style="list-style-type: none;">
+				  	{{ range first 5 .Pages }}
+        				<li>
+           					 <h6><a class='{{ if eq $currentPage.URL .URL }}active{{ end }}'
+           					        href='{{ .Permalink }}'>{{ .Title }}</a></h6>
+            				<small><time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time></small>
+        				</li>
+    				{{ end }}
+    			</ul>
+			{{ end }}
+			</div>
+</div>
+</nav>
+

@@ -74,6 +74,17 @@ figure h4{
 	text-decoration:underline;
 }
 
+.mcr-navbar-side h5:not(:first-of-type) {
+	padding-top:30px;
+}
 
+.mcr-navbar-side li:not(:first-of-type) h6 {
+	padding-top:15px;
+}
+
+.mcr-navbar-side a.active{
+	text-decoration: underline;
+	font-weight:bold;
+}
 
 @import "../_webjars/bootstrap/4.1.3/scss/bootstrap.scss";

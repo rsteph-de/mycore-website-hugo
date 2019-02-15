@@ -1,7 +1,11 @@
+{{ $currentPage := . }}
 <div class="container">
 	<div class="row" style="min-height:75px;background-image: url('/images/_site/background_header_blue_xml.png'); background-size:100% 100%;">
 		<div class="col" >
-		<img alt="MyCoRe Logo" src="/images/_site/logo_mycore_my_content_repository.png" >
+		<img alt="MyCoRe Logo" src="/images/_site/logo_mycore_my_content_repository.png">
+		{{if hasPrefix $currentPage.URL "/blog/"}} 
+			<span class="blog-header h1" style="color:white;opacity:0.75;position:relative;top:20px">BLOG</span>
+		{{end}}
 
 		</div>
 	</div>

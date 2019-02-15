@@ -17,23 +17,6 @@ blog/tags:
 
 ---
 
----
-title: "Alles Gute zum Neuen Jahr"  
-slug: neues-jahr
-date: 2018-01-01
-
-draft: false
-
-blog/authors: Robert Stephan
-blog/periods: 2018-01
-blog/categories: 
- - News
-blog/tags:
- - "Alles wird gut"
- 
----
-
-
 # datamodel-plugin erweitern
 
 Wer das MyCoRe [Datamodel-Plugin](https://github.com/MyCoRe-Org/datamodel-plugin) verwendet, um ein eigenes [Datenmodell](http://www.mycore.de/documentation/basics/mcrobject/mcrobject_datadef.html) in ein XML-Schema zu übersetzen kommt vielleicht an den Punkt, dass er eigene Datentypen ergänzen möchte. Dabei stellt sich die Frage, wie man Erweiterungen diesen Plugin zur Verfügung stellt.
