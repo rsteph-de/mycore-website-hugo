@@ -68,3 +68,7 @@ main:
     name: Organisation
     url: /support/
     weight: -400
+  - identifier: blog
+    name: BLOG
+    url: /blog/
+    weight: -300

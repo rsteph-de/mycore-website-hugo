@@ -46,6 +46,11 @@ languages:
 
 permalinks:
   blog: /blog/:year/:month/:slug/
-    
+  
+#Alternative. Permalinks für Taxonomien, die "/blog/" enthalten
 taxonomies:
-  tag: "tags"
+  period: "blog/periods"
+  category: "blog/categories"
+  tag: "blog/tags"
+  author: "blog/authors"
+  

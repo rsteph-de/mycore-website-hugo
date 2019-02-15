@@ -1,0 +1,17 @@
+{{- define "main" -}}
+
+<div class="container">
+  <div class="row">
+	<div class="col-3">
+	 {{- partial "blog_calendar.html" . -}}
+	</div>
+	<div class="col-9">
+		<h1>{{ .Title }}</h1>
+			{{ partial "tax_entries" . }}
+		</div>
+ 	</div>
+</div>
+
+
+
+{{- end -}}

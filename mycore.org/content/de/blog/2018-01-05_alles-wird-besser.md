@@ -1,11 +1,17 @@
 ---
 title: "Alles wird besser"  
 slug: alles-wird-besser
-date: 2018-01-05
-period: 2018-01
+date: 2018-01-07
 
 draft: false
-  
+
+blog/authors: Robert Stephan
+blog/periods: 2018-01
+blog/categories: 
+- News
+blog/tags:
+ - "Alles wird gut"
+
 ---
 # Mein erster Blogeintrag
 Alles wird gut ....
