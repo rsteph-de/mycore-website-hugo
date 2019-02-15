@@ -43,6 +43,9 @@ languages:
       languageName: "English"
       weight: 2
       contentDir: content/en
+
+permalinks:
+  blog: /blog/:year/:month/:slug/
     
 taxonomies:
   tag: "tags"

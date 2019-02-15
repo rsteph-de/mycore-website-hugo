@@ -1,0 +1,40 @@
+<nav class="navbar mcr-navbar-side navbar-expand-md">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavSide" aria-controls="navbarNavSide" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+ 	</button>
+ 	<div class="collapse navbar-collapse" id="navbarNavSide">
+    	<div class="mcr-calendar">
+			<ul style="list-style-type: none;padding-left: 0;">
+				{{ with .Site.GetPage "section" "blog" }}
+    				{{ range .Data.Pages.GroupByDate "2006" }}
+    					<li><h6> {{ .Key }} </h6></li>
+    						{{ $monthlyPages := .Pages.GroupByDate "2006-01" }}
+							{{ if ge (len $monthlyPages) 1 }}
+    							<ul  class="pb-3" style="list-style-type: none;padding-left: 0;">
+    								{{ range $monthlyPages  }}
+    									<li><i class="fas fa-calendar-week pr-2"></i>
+    										{{ range first 1 .Pages  }}
+    										  {{.Date.Format "Jan 2006"}}
+    										{{ end }}
+    									</li>
+    								{{ end }}
+    				    		</ul>
+    				    	{{ end }}
+    				{{ end }}
+   				{{ end }}
+			</ul>
+			
+			<h4>TOC</h4>
+			{{ with .Site.GetPage "section" "blog" }}
+				<ul class="pl-3">
+				  	{{ range .Pages }}
+        				<li>
+           					 <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong><br />
+            				<small><time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time></small>
+        				</li>
+    				{{ end }}
+    			</ul>
+			{{ end }}
+	</div>
+</nav>
+
