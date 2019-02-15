@@ -9,7 +9,6 @@ mcr_versions: ['2017.06','2018.06']
 
 ---
 
-# Konfiguration
 
 ## Konfigurationsverzeichnis
 

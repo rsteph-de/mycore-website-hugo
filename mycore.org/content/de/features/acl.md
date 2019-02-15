@@ -2,12 +2,8 @@
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Benutzer- und Zugriffsrechteverwaltung
-categories:
-- Overview
 
 ---
-
-# Benutzer- und Zugriffsrechteverwaltung
 
 ## Benutzer und Rollen
 

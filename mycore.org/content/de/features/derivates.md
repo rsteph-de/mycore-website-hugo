@@ -2,12 +2,8 @@
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Dateiverwaltung, Digitalisate und Video Streaming
-categories:
-- Overview
 
 ---
-
-# Dateiverwaltung, Digitalisate und Video Streaming
 
 ## Dateibereiche
 

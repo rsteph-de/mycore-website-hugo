@@ -2,12 +2,8 @@
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Weboberfläche und Autoren-Schnittstellen
-categories:
-- Overview
 
 ---
-
-# Weboberfläche und Autoren-Schnittstellen
 
 ## Anpassbare Weboberfläche
 

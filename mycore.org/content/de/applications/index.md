@@ -2,10 +2,8 @@
 
 date: "2018-02-15"
 description: 
-title: Anwendungen
+title: MyCoRe-Anwendungen
 
 ---
-
-# MyCoRe Amwendungen
 
 eine Übersicht zu den MyCoRe-Anwendungen ...

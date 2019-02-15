@@ -7,8 +7,6 @@ authors: Kathleen Neumann, Jens Kupferschmidt, Robert Stephan
 
 ---
 
-# Suche in MyCoRe mit Apache Solr
-
 Die MyCoRe-Anwendungen benötigen eine leistungsstarke Suchmaschine für vielfältige Suchoperationen. Die Grundinstallation wird auf dieser Seite beschrieben. Hinsichtlich der konkreten MyCoRe-Anwendung gibt es weiterführenden Hinweise im Kapitel Suche. 
 
 ## Einrichtung eines Solr-Servers

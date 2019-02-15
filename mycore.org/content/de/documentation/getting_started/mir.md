@@ -7,8 +7,6 @@ authors: Kathleen Neumann
 
 ---
 
-# MIR
-
 ## Installation
 
 ### Voraussetzungen

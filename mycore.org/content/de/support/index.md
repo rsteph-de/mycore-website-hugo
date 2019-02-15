@@ -6,6 +6,5 @@ title: Organisation
 
 ---
 
-# Organisation
 
 Wir über uns ...

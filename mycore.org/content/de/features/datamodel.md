@@ -1,12 +1,9 @@
 ---
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
-title: Datenmodell
-categories:
-- Overview
+title: Das MyCoRe Datenmodell
 
 ---
-# Das MyCoRe Datenmodell
 
 ## Objekte, Datentypen und Beziehungen
 Statt ein fixes Datenmodell wie Dublin Core vorzugeben, lässt sich das Metadatenmodell einer

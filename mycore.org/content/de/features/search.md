@@ -2,11 +2,8 @@
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Suche in Metadaten und Volltext
-categories:
-- Overview
 
 ---
-# Suche in Metadaten und Volltext
 
 ## Suchfunktionen
 

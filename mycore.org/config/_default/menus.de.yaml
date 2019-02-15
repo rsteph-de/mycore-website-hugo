@@ -3,40 +3,17 @@ main:
     name: "Start"
     url: "/"
     weight: -900
-  - identifier: features
-    name: Funktionen
-    url: /features
-    weight: -890
-  -   parent: features
-      identifier: features_index
-      name: Übersicht
-      url: /features
-      weight: -880
-  -   parent: features
-      identifier: features_datamodel
-      name: Datenmodell
-      url: /features/datamodel
-      weight: -870
-  -   parent: features
-      identifier: features_search
-      name: Suche 
-      url: /features/search
-      weight: -870
-  -     parent: features_search
-        identifier: features_search_simple
-        name: einfache Suche 
-        url: /features/search/simple
-        weight: -869
-  -     parent: features_search
-        identifier: features_search_complex
-        name: erweiterte Suche 
-        url: /features/search/complex
-        weight: -868
-  -     parent: features_search
-        identifier: features_search_expert
-        name: einfache Suche 
-        url: /features/search/complex
-        weight: -867                     
+  - {									identifier: features,				name: Funktionen,			weight: -890,	url: /features					}
+  -   {parent: features,               	identifier: features_datamodel,	 	name: Datenmodell,			weight: -880, 	url: /features/datamodel		}
+  -   {parent: features,               	identifier: features_search,        name: Suche,       			weight: -870,	url: /features/search			}
+  -     {parent: features_search, 		identifier: features_search_simple,	name: einfache Suche, 		weight: -869, 	url: /features/search/simple	}
+  -     {parent: features_search,	    identifier: features_search_complex,name: erweiterte Suche, 	weight: -868,	url: /features/search/complex	}
+  -     {parent: features_search, 		identifier: features_search_expert,	name: einfache Suche, 		weight: -867,	url: /features/search/expert	}	 
+  -   {parent: features,				identifier: features_frontend, 		name: Präsentation, 		weight: -860,	url: /features/frontend			}
+  -   {parent: features, 				identifier: features_interfaces,	name: Schnittstellen,		weight: -850,	url: /features/interfaces		}
+  -   {parent: features, 				identifier: features_derivates, 	name: Dateiverwaltung, 		weight: -840, 	url: /features/derivates		}
+  -   {parent: features,				identifier: features_acl, 			name: Rechteverwaltung, 	weight: -840, 	url: /features/acl				}
+                      
   - identifier: applications
     name: Beispiele
     url: /applications/

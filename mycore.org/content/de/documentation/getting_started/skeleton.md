@@ -7,8 +7,6 @@ authors: Kathleen Neumann, Wiebke Oeltjen, Robert Stephan
 
 ---
 
-# Mit dem 'Skeleton' zur eigenen Anwendung
-
 Zur Entwicklung einer eigenen MyCoRe-Anwendung stellen wir ein Anwendungsgerüst
 zur Verfügung, das als Einstieg dienen soll.
 

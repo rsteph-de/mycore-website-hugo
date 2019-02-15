@@ -2,12 +2,8 @@
 
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Standardisierte Schnittstellen
-categories:
-- Overview
 
 ---
-
-# Standardisierte Schnittstellen
 
 ## „Open Archives Initiative“ OAI-PMH 2.0
 
