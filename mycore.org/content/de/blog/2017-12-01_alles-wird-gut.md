@@ -8,7 +8,7 @@ draft: false
 blog/authors: Robert Stephan
 blog/periods: 2017-12
 blog/categories: 
-- News
+ - News
 blog/tags:
  - "Alles wird gut"
 

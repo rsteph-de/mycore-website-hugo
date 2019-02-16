@@ -15,10 +15,12 @@
 							{{ if ge (len $monthlyPages) 1 }}
     							{{ range $monthlyPages.Reverse  }}
     								<span class="pr-3">
+    								    {{$count := len .Pages}}
     									{{ range first 1 .Pages  }}
     									 <a class='{{ if in $currentPage.URL (print "/" (.Date.Format "2006-01") "/")}}active{{ end }}'
     									     href='blog/periods/{{.Date.Format "2006-01"}}'>
     									  	{{.Date.Format "Jan"}}
+    									  	<span class="badge badge-secondary">{{$count}}</span>
     									  </a>
     									{{ end }}
     								</span>
@@ -35,7 +37,9 @@
 			 {{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/categories"}}
 			 <li><a class='{{ if in $currentPage.URL (print "/blog/categories/" $taxonomy_term "/")}}active{{ end }}'
 			        href='blog/categories/{{ $taxonomy_term }}'>
-			 	{{ $taxonomy_term }}</a>
+			 		{{ $taxonomy_term }} 
+			 		<span class="badge badge-secondary">{{ len $taxonomy }}</span>
+			 	  </a>
 			 </li>
 			 {{ end }}
         	</ul>
@@ -43,8 +47,11 @@
       	
 			<h5><i class="fas fa-tags"></i> Tags</h5>
 			{{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/tags"}}
-			 <a class='mr-2 {{ if in $currentPage.URL (print "/blog/tags/" $taxonomy_term "/")}}active{{ end }}'
-			 	href='blog/tags/{{ $taxonomy_term }}'>{{ $taxonomy_term }}</a>
+			  <a class='mr-2 {{ if in $currentPage.URL (print "/blog/tags/" $taxonomy_term "/")}}active{{ end }}'
+			 	href='blog/tags/{{ $taxonomy_term }}'>
+			 		{{ $taxonomy_term }} 
+			 		<span class="badge badge-secondary">{{ len $taxonomy }}</span>
+			  </a>
 			 {{ end }}
 
 			<h5><i class="far fa-newspaper"></i> Aktuelles</h5>
@@ -59,7 +66,7 @@
     				{{ end }}
     			</ul>
 			{{ end }}
-			</div>
-</div>
+		</div>
+	</div>
 </nav>
 

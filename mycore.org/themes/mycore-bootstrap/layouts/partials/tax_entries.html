@@ -1,15 +1,9 @@
 
 {{ range .Pages.Reverse }}
-  <p>
-    <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
-    {{ $customDateFormat := "January 2, 2006" }}
-    {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
-    <br>
-    <small class="text-secondary">{{ .PublishDate.Format $customDateFormat }}</small>
-   
-
-    <br>
+  <div>
+  	{{- partial "blog/badges.html" . -}}
+    <h5 class="pt-2"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h5>
     {{ .Summary }}
-
-  </p>
+	<hr />
+  </div>
 {{ end }}
