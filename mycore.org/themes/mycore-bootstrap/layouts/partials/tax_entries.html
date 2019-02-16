@@ -1,5 +1,5 @@
 
-{{ range .Pages.Reverse }}
+{{ range .Pages }}
   <div>
   	{{- partial "blog/badges.html" . -}}
     <h5 class="pt-2"><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h5>
