@@ -3,10 +3,7 @@ main:
   
   -   {identifier: features,												name: Funktionen,			weight: -890,	url: /features						}
   -     {identifier: features_datamodel,		parent: features,           name: Datenmodell,			weight: -880, 	url: /features/datamodel			}
-  -     {identifier: features_search,			parent: features,          	name: Suche,       			weight: -870,	url: /features/search				}
-  -       {identifier: features_search_simple,	parent: features_search, 	name: einfache Suche, 		weight: -869, 	url: /features/search/simple		}
-  -       {identifier: features_search_complex,	parent: features_search,	name: erweiterte Suche, 	weight: -868,	url: /features/search/complex		}
-  -       {identifier: features_search_expert,	parent: features_search, 	name: einfache Suche, 		weight: -867,	url: /features/search/expert		}	 
+  -     {identifier: features_search,			parent: features,          	name: Suche,       			weight: -870,	url: /features/search				} 
   -     {identifier: features_frontend,			parent: features,			name: Präsentation, 		weight: -860,	url: /features/frontend				}
   -     {identifier: features_interfaces,		parent: features, 			name: Schnittstellen,		weight: -850,	url: /features/interfaces			}
   -     {identifier: features_derivates,		parent: features, 			name: Dateiverwaltung, 		weight: -840, 	url: /features/derivates			}
