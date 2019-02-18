@@ -1,76 +1,31 @@
 main:
-  - identifier: "welcome"
-    name: "Start"
-    url: "/"
-    weight: -900
-  - {									identifier: features,				name: Funktionen,			weight: -890,	url: /features					}
-  -   {parent: features,               	identifier: features_datamodel,	 	name: Datenmodell,			weight: -880, 	url: /features/datamodel		}
-  -   {parent: features,               	identifier: features_search,        name: Suche,       			weight: -870,	url: /features/search			}
-  -     {parent: features_search, 		identifier: features_search_simple,	name: einfache Suche, 		weight: -869, 	url: /features/search/simple	}
-  -     {parent: features_search,	    identifier: features_search_complex,name: erweiterte Suche, 	weight: -868,	url: /features/search/complex	}
-  -     {parent: features_search, 		identifier: features_search_expert,	name: einfache Suche, 		weight: -867,	url: /features/search/expert	}	 
-  -   {parent: features,				identifier: features_frontend, 		name: Präsentation, 		weight: -860,	url: /features/frontend			}
-  -   {parent: features, 				identifier: features_interfaces,	name: Schnittstellen,		weight: -850,	url: /features/interfaces		}
-  -   {parent: features, 				identifier: features_derivates, 	name: Dateiverwaltung, 		weight: -840, 	url: /features/derivates		}
-  -   {parent: features,				identifier: features_acl, 			name: Rechteverwaltung, 	weight: -840, 	url: /features/acl				}
-                      
-  - identifier: applications
-    name: Beispiele
-    url: /applications
-    weight: -700
-  -   parent: applications
-      identifier: applications_demo
-      name: Demo
-      url: /applications/index.html
-      weight: -710
-  -   parent: applications
-      identifier: applications_map
-      name: Karte
-      url: /applications/map.html
-      weight: -720
-  -   parent: applications
-      identifier: applications_list
-      name: "Anwendungen von A-Z"
-      url: /applications/list.html
-      weight: -730                        
-  - identifier: download
-    name: Download
-    url: /download
-    weight: -600
-  - identifier: documentation
-    name: Dokumentation
-    url: /documentation
-    weight: -500
-  -   parent: documentation 
-      identifier: getting_started
-      name: Mit MyCoRe Starten
-      url: /documentation/getting_started
-      weight: -490
-  -     parent: getting_started 
-        identifier: mir
-        name: Mir
-        url: /documentation/getting_started/mir
-        weight: -489
-  -     parent: getting_started 
-        identifier: skeleton
-        name: Skeleton
-        url: /documentation/getting_started/skeleton
-        weight: -488
-  -     parent: getting_started 
-        identifier: solr_7
-        name: Solr-Integration
-        url: /documentation/getting_started/solr_7
-        weight: -487
-  -     parent: getting_started 
-        identifier: mcr_properties
-        name: Konfiguration & Properties
-        url: /documentation/getting_started/mcr_properties
-        weight: -486    
-  - identifier: support
-    name: Organisation
-    url: /support
-    weight: -400
-  - identifier: blog
-    name: BLOG
-    url: /blog
-    weight: -300
+  -   {identifier: "welcome",												name: "Start",				weight: -900,	url: "/"		}
+  
+  -   {identifier: features,												name: Funktionen,			weight: -890,	url: /features						}
+  -     {identifier: features_datamodel,		parent: features,           name: Datenmodell,			weight: -880, 	url: /features/datamodel			}
+  -     {identifier: features_search,			parent: features,          	name: Suche,       			weight: -870,	url: /features/search				}
+  -       {identifier: features_search_simple,	parent: features_search, 	name: einfache Suche, 		weight: -869, 	url: /features/search/simple		}
+  -       {identifier: features_search_complex,	parent: features_search,	name: erweiterte Suche, 	weight: -868,	url: /features/search/complex		}
+  -       {identifier: features_search_expert,	parent: features_search, 	name: einfache Suche, 		weight: -867,	url: /features/search/expert		}	 
+  -     {identifier: features_frontend,			parent: features,			name: Präsentation, 		weight: -860,	url: /features/frontend				}
+  -     {identifier: features_interfaces,		parent: features, 			name: Schnittstellen,		weight: -850,	url: /features/interfaces			}
+  -     {identifier: features_derivates,		parent: features, 			name: Dateiverwaltung, 		weight: -840, 	url: /features/derivates			}
+  -     {identifier: features_acl,				parent: features,			name: Rechteverwaltung, 	weight: -830, 	url: /features/acl					}
+  
+  -     {identifier: applications,			    					        name: Beispiele,       		weight: -700,	url: /applications					}
+  -     {identifier: applications_demo,		    parent: applications,       name: Demo,            		weight: -710,	url: /applications/index.html		}
+  -     {identifier: applications_map,     		parent: applications,      	name: Karte,			    weight: -720,	url: /applications/map.html			}
+  -     {identifier: applications_list,			parent: applications,		name: "Anwendungen von A-Z",weight: -730,   url: /applications/list.html		}
+ 
+  -   {identifier: download,												name: Download,				weight: -600,	url: /download						}
+ 
+  -   {identifier: documentation,											name: Dokumentation,				weight: -500,	url: /documentation									}
+  -     {identifier: getting_started,			parent: documentation,		name: Mit MyCoRe Starten,			weight: -490,	url: /documentation/getting_started					}
+  -       {identifier: mir,						parent: getting_started,	name: Mir,							weight: -489,	url: /documentation/getting_started/mir				}
+  -       {identifier: skeleton,				parent: getting_started,	name: Skeleton,						weight: -488,	url: /documentation/getting_started/skeleton		}
+  -       {identifier: solr_7,					parent: getting_started,	name: Solr-Integration,				weight: -487,	url: /documentation/getting_started/solr_7			}
+  -       {identifier: mcr_properties,			parent: getting_started,	name: Konfiguration & Properties,	weight: -486,	url: /documentation/getting_started/mcr_properties  } 
+
+  -   {identifier: support,													name: Organisation,					weight: -400,	url: /support	}
+  
+  -   {identifier: blog,													name: BLOG,							weight: -300,	url: /blog		}
