@@ -1,18 +1,27 @@
 {{- define "main" -}}
 
-<div class="container">
+<div class="container-fluid">
   <div class="row">
 	<div class="col-3">
 	 {{- partial "side_menu.html" . -}}
 	</div>
-	<div class="col-9">
+	<div class="col-6">
 	     <h1>{{ .Title | markdownify }}</h1>
+	    
 	    <div class="text-right">
 	    {{ range .Params.mcr_versions }}
 	     <span class="badge badge-primary">{{.}}</span>
 	    {{ end }}
 	    </div>
+	    {{ with .Params.abstract }}
+	   		 <div class="alert alert-success">{{ . | safeHTML }}</div>
+	    {{end}}
 		{{ .Content  }}	
+	</div>
+	<div class="col-3">
+		<aside>
+		{{ .TableOfContents }}
+		</aside>
 	</div>
  </div>
 </div>

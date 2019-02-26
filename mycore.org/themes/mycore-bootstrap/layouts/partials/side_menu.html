@@ -13,16 +13,44 @@
 					<ul>
 						{{ range .Children }}
 							<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
-							       href="{{ absLangURL .URL }}">{{ .Name }}</a></li>
+								data-toggle='{{ if .HasChildren}}collapse{{ end }}'
+								href='{{ if .HasChildren }}{{ (print "#" .Identifier) }}{{ else }}{{absLangURL .URL}}{{end}}'>
+								{{ .Name }}</a></li>
 							{{ if .HasChildren }}
-							<ul>
+							<ul id='{{ .Identifier }}'
+							     class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
 								{{ range .Children }}
 								<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
-									   href="{{ absLangURL .URL }}">{{ .Name }}</a></li>
-								{{ end }}
-							</ul>
-							{{ end }}
+								       data-toggle='{{ if .HasChildren}} collapse{{ end }}'
+								       href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ absLangURL .URL }} {{ end }}'>
+								       {{ .Name }}</a></li>
+							      {{ if .HasChildren }}
+							        <ul id='{{ .Identifier }}'
+							            class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
+										{{ range .Children }}
+											<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+								       			   data-toggle='{{ if .HasChildren}} collapse{{ end }}'
+								       			   href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ absLangURL .URL }} {{ end }}'>
+								       			   {{ .Name }}</a></li>
+								            {{ if .HasChildren }}
+							        			<ul id='{{ .Identifier }}'
+							            			class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
+													{{ range .Children }}
+														<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+								       			   			data-toggle='{{ if .HasChildren}} collapse{{ end }}'
+								       			   			href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ absLangURL .URL }} {{ end }}'>
+								       			   			{{ .Name }}</a></li>	   
+								         			{{ end }}
+								     			</ul>
+								  			{{ end }}	   
+								        {{ end }}
+								     </ul>
+								  {{ end }}
+							   {{ end }}
+						   </ul>
 						{{ end }}
+						{{ end }}
+						
 					</ul>
 					{{ end }}
 				{{ end }}
