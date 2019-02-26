@@ -22,6 +22,7 @@ main:
   -       {identifier: skeleton,				parent: getting_started,	name: Skeleton,						weight: -488,	url: /documentation/getting_started/skeleton		}
   -       {identifier: solr_7,					parent: getting_started,	name: Solr-Integration,				weight: -487,	url: /documentation/getting_started/solr_7			}
   -       {identifier: mcr_properties,			parent: getting_started,	name: Konfiguration & Properties,	weight: -486,	url: /documentation/getting_started/mcr_properties  } 
+  -       {identifier: requirements,			parent: getting_started,	name: Systemanforderungen,			weight: -485,	url: /documentation/getting_started/requirements  } 
 
   -   {identifier: support,													name: Organisation,					weight: -400,	url: /support	}
   
