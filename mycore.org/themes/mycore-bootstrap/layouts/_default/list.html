@@ -14,31 +14,6 @@
 	    </div>
 	    <h1>{{ .Title | markdownify }}</h1>
 
-		
-			{{ $currentPage := . }}
-		    {{ range .Site.Menus.main }}
-				{{ if or ($.IsMenuCurrent "main" .)  (eq $currentPage.URL (print .URL "/"))}} 
-					<h5>Inhaltsverzeichnis</a></h5>
-					{{ if .HasChildren }}
-					<ul>
-						{{ range .Children }}
-							<li><a class='nav-item nav-link {{ if hasPrefix $currentPage.URL (print .URL "/")}} active {{ end }}'
-							       href="{{ absLangURL .URL }}">{{ .Name }}</a>
-							{{ if .HasChildren }}
-							<ul>
-								{{ range .Children }}
-								<li><a class='nav-item nav-link {{ if hasPrefix $currentPage.URL (print .URL "/")}} active {{ end }}'
-									   href="{{ absLangURL .URL }}">{{ .Name }}</a></li>
-								{{ end }}
-							</ul>
-							{{ end }}
-						{{ end }}
-					</ul>
-					{{ end }}
-					<hr />
-				{{ end }}
-			{{ end }}
-			
 			
 		    {{ .Content  }}
 	</div>
