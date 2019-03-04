@@ -109,8 +109,10 @@ generated_toc = {
 
     // make the basic elements of the TOC itself, ready to fill into
 
+    /*
     // first, check if there's a cookie defined to save the state as open
     status = generated_toc.readCookie("generated_toc_display");
+
     if (status && status == "open") {
       display_initially = "block";
       toggle_initially = "Hide table of contents";
@@ -118,6 +120,10 @@ generated_toc = {
       display_initially = "none";
       toggle_initially = "Show table of contents";
     }
+    */
+    display_initially = "block";
+    toggle_initially = "Hide table of contents";
+
 
     cur_head_lvl = "h" + generate_from;
     cur_list_el = document.createElement('ul');
