@@ -1,31 +1,29 @@
 package org.mycore.website.transformer;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
+import org.jdom2.CDATA;
 import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
+import org.jdom2.Text;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.XMLOutputter;
 import org.yaml.snakeyaml.Yaml;
 
 public class PageTransformer {
-	
-	private static Path P_INPUT = Transformer.BASE_DIR.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
-	private static Path P_OUTPUT_DE = Transformer.BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\de");
-	private static Path P_OUTPUT_EN = Transformer.BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\en");
-	private static Path MENUE = Transformer.BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\config\\_default\\menus.de.yaml");
-	private static List<Path> IGNORE = Arrays.asList(Paths.get("index.de.xml"), Paths.get("index.en.xml"));
-	private static List<String> IGNORE_REF = Arrays.asList("appdev_2_1", "howtoget", "docportal", "sessions_2_1", "version_2_2", "version_2_1", "news");
 	
 	private Map<String, Object> menueData;
 
@@ -37,7 +35,7 @@ public class PageTransformer {
 	public PageTransformer() {
 		try {
 			Yaml yaml = new Yaml();
-			menueData = yaml.load(Files.newBufferedReader(MENUE));
+			menueData = yaml.load(Files.newBufferedReader(Transformer.P_MENUE));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -45,13 +43,13 @@ public class PageTransformer {
 
 	private void run() {
 		try {
+		
+			Files.walk(Transformer.P_INPUT).filter(Files::isRegularFile).forEach(p -> execute(p));
+			Files.walk(Transformer.P_OUTPUT_DE).filter(Files::isDirectory).forEach(p -> createIndexMD(p));
+			Files.walk(Transformer.P_OUTPUT_EN).filter(Files::isDirectory).forEach(p -> createIndexMD(p));
 
-			Files.walk(P_INPUT).filter(Files::isRegularFile).forEach(p -> execute(p));
-			Files.walk(P_OUTPUT_DE).filter(Files::isDirectory).forEach(p -> createIndexMD(p));
-			Files.walk(P_OUTPUT_EN).filter(Files::isDirectory).forEach(p -> createIndexMD(p));
-
-			Files.walk(P_OUTPUT_DE).filter(Files::isRegularFile).forEach(p -> editHTML(p));
-			Files.walk(P_OUTPUT_EN).filter(Files::isRegularFile).forEach(p -> editHTML(p));
+			Files.walk(Transformer.P_OUTPUT_DE).filter(Files::isRegularFile).forEach(p -> editHTML(p));
+			Files.walk(Transformer.P_OUTPUT_EN).filter(Files::isRegularFile).forEach(p -> editHTML(p));
 
 			editMenueAndFilenames();
 
@@ -78,7 +76,7 @@ public class PageTransformer {
 			String id = map.get("identifier").toString();
 			String url = map.get("url").toString();
 			if (!url.startsWith("http://")) {
-				Path pDe = P_OUTPUT_DE.resolve(url.substring(1) + ".html");
+				Path pDe = Transformer.P_OUTPUT_DE.resolve(url.substring(1) + ".html");
 				if(pDe.getFileName().toString().contains("#")) {
 					continue;
 				}
@@ -87,7 +85,7 @@ public class PageTransformer {
 				} else {
 					System.out.println(pDe.getFileName());
 				}
-				Path pEn = P_OUTPUT_EN.resolve(url.substring(1) + ".html");
+				Path pEn = Transformer.P_OUTPUT_EN.resolve(url.substring(1) + ".html");
 				if (Files.exists(pEn)) {
 					Files.move(pEn, pEn.getParent().resolve(id + ".html"));
 				}
@@ -95,7 +93,7 @@ public class PageTransformer {
 			}
 		}
 		Yaml yaml = new Yaml();
-		yaml.dump(menueData, Files.newBufferedWriter(MENUE));
+		yaml.dump(menueData, Files.newBufferedWriter(Transformer.P_MENUE));
 	}
 
 	private Object editHTML(Path p) {
@@ -105,6 +103,7 @@ public class PageTransformer {
 				try (BufferedWriter writer = Files.newBufferedWriter(p)) {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
+	// TODO					s = s.replace("<img src=\"images/_generated", "<img src='{{ relURL \"images/_generated");
 						writer.newLine();
 						writer.write(s);
 					}
@@ -121,7 +120,10 @@ public class PageTransformer {
 			if (Files.exists(p.resolve("index.html"))) {
 				Files.move(p.resolve("index.html"), p.resolve("_index.html"));
 			} else {
-				Files.write(p.resolve("_index.md"), "".getBytes());
+				if(!Arrays.asList("de", "en").contains(p.getFileName().toString())) {
+					Files.write(p.resolve("_index.md"), "".getBytes());
+				}
+				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -130,7 +132,7 @@ public class PageTransformer {
 	}
 
 	private Object execute(Path p) {
-		if (IGNORE.contains(P_INPUT.relativize(p))) {
+		if (Transformer.IGNORE.contains(Transformer.P_INPUT.relativize(p))) {
 			System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx" + p.getFileName());
 			return null;
 		}
@@ -143,10 +145,10 @@ public class PageTransformer {
 				sax.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 				Document doc = sax.build(p.toFile());
 
-				Path pTarget = P_OUTPUT_DE.resolve(P_INPUT.relativize(p.getParent()))
+				Path pTarget = Transformer.P_OUTPUT_DE.resolve(Transformer.P_INPUT.relativize(p.getParent()))
 						.resolve(p.getFileName().toString().replace(".xml", ".html").replace(".de.", "."));
 				if (p.getFileName().toString().contains(".en.")) {
-					pTarget = P_OUTPUT_EN.resolve(P_INPUT.relativize(p.getParent()))
+					pTarget = Transformer.P_OUTPUT_EN.resolve(Transformer.P_INPUT.relativize(p.getParent()))
 							.resolve(p.getFileName().toString().replace(".xml", ".html").replace(".en.", "."));
 				}
 
@@ -169,7 +171,8 @@ public class PageTransformer {
 
 	private void createBody(Element eSource, int level) {
 		int newLevel = level;
-		for (Content c : eSource.getContent()) {
+		for (int i = 0; i < eSource.getContent().size(); i++) {
+			Content c = eSource.getContent(i);
 			if (c.getCType() == Content.CType.Element) {
 				Element e = (Element) c;
 				e.setNamespace(Namespace.NO_NAMESPACE);
@@ -185,6 +188,59 @@ public class PageTransformer {
 					replaceSiteByRef(e);
 				}
 				createBody(e, newLevel);
+				if (e.getName().equals("pre")) {
+					Element preParentE = e.getParentElement();
+					String lang = "text";
+					if(e.getAttribute("class") != null) {
+						lang = e.getAttributeValue("class").replace("brush:", "").replaceAll("\\s*gutter:\\s*false", "").replace(";","").trim();
+					}
+					preParentE.addContent(preParentE.getContent().indexOf(e), new Text("{{< highlight " + lang + " \"linenos=table\">}}"));
+					while(e.getContent().size() > 0) {
+						Content c2 = e.getContent(0);
+						if(c2 instanceof CDATA) {
+							CDATA cdata = (CDATA) c2.detach();
+							String text = cdata.getText();
+							preParentE.addContent(preParentE.getContent().indexOf(e), new Text(text));
+						} else {
+							preParentE.addContent(preParentE.getContent().indexOf(e), c2.detach());
+						}
+						
+					}
+					preParentE.addContent(preParentE.getContent().indexOf(e), new Text("{{< /highlight >}}"));
+					preParentE.removeContent(e);
+				}
+				if (e.getName().equals("img")) {
+					Path pImageOld = Paths.get("C:\\workspaces\\mycore\\git\\mycore-documentation\\src\\documentation\\content\\xdocs");
+					Path pImageOld2 = Paths.get("C:\\workspaces\\mycore\\git\\mycore-documentation\\src\\documentation\\resources");
+					
+					try {
+						Files.createDirectories(Transformer.P_OUTPUT_IMAGES);
+						String src = e.getAttributeValue("src");
+						if(src.startsWith("/")) {
+							src = src.substring(1);
+						}
+						String filename = src;
+						if(filename.contains("/")) {
+							filename = filename.substring(filename.lastIndexOf("/")+1);
+						}
+						
+						if(Files.exists(pImageOld.resolve(src))) {
+							Files.copy(pImageOld.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
+							e.setAttribute("src",  "{{urlRef /images/_generated/" + filename + "}}");
+									
+						} else if(Files.exists(pImageOld2.resolve(src))) {
+							Files.copy(pImageOld2.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(filename), StandardCopyOption.REPLACE_EXISTING);
+							e.setAttribute("src",  "{{urlRef /images/_generated/" + filename + " }}");
+						} else {
+							System.err.println("Bild nicht gefunden! " + e.getAttributeValue("src"));
+						}
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
 			}
 		}
 	}
@@ -196,7 +252,7 @@ public class PageTransformer {
 		}
 		
 		String url = getYamlUrl(ref);
-		if(IGNORE_REF.contains(ref)) {
+		if(Transformer.IGNORE_REF.contains(ref)) {
 			e.setAttribute("href", ref + "#NOT_FOUND");
 		} else if(url.startsWith("http:")) {
 			e.setAttribute("href", url);
