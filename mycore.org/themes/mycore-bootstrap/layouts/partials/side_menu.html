@@ -8,7 +8,7 @@
 		    {{ range .Site.Menus.main }}
 				{{ if or ($.IsMenuCurrent "main" .)  (hasPrefix $currentPage.URL (print .URL "/"))}} 
 					
-					<h5><a class='nav-item nav-link' href="{{ absLangURL .URL }}">{{ .Name }}</a></h5>
+					<h5 class="no-TOC"><a class='nav-item nav-link' href="{{ absLangURL .URL }}">{{ .Name }}</a></h5>
 					{{ if .HasChildren }}
 					<ul>
 						{{ range .Children }}

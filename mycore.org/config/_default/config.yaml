@@ -1,5 +1,6 @@
 # baseURL: "/data/temp/mycore-hugo/"
 baseURL: "/"
+canonifyURLs: true
 theme: "mycore-bootstrap"
 
 params:
