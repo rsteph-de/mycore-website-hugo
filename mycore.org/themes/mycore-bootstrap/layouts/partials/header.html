@@ -32,7 +32,7 @@
 			<nav class="navbar mcr-navbar-top navbar-expand-md float-right">
 				<div class="navbar-nav">
 					{{ range $.Site.Home.AllTranslations }}
-						<a class="nav-item nav-link"  href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+						<a class="nav-item nav-link"  href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a>
 					{{ end }}
 				</div>
 			</nav>

@@ -1,4 +1,4 @@
-# baseURL: "http://rosdok.uni-rostock.de/data/temp/mycore-hugo/"
+# baseURL: "/data/temp/mycore-hugo/"
 baseURL: "/"
 canonifyURLs: true
 theme: "mycore-bootstrap"
