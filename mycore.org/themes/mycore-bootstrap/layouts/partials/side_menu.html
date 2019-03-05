@@ -22,7 +22,7 @@
 								{{ range .Children }}
 								<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
 								       data-toggle='{{ if .HasChildren}} collapse{{ end }}'
-								       href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print $currentPage.Site.BaseURL (absLangURL .URL)) }} {{ end }}'>
+								       href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
 								       {{ .Name }}</a></li>
 							      {{ if .HasChildren }}
 							        <ul id='{{ .Identifier }}'
@@ -30,7 +30,7 @@
 										{{ range .Children }}
 											<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
 								       			   data-toggle='{{ if .HasChildren}} collapse{{ end }}'
-								       			   href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print $currentPage.Site.BaseURL (absLangURL .URL)) }} {{ end }}'>
+								       			   href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
 								       			   {{ .Name }}</a></li>
 								            {{ if .HasChildren }}
 							        			<ul id='{{ .Identifier }}'
@@ -38,7 +38,7 @@
 													{{ range .Children }}
 														<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
 								       			   			data-toggle='{{ if .HasChildren}} collapse{{ end }}'
-								       			   			href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print $currentPage.Site.BaseURL (absLangURL .URL)) }} {{ end }}'>
+								       			   			href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
 								       			   			{{ .Name }}</a></li>	   
 								         			{{ end }}
 								     			</ul>
