@@ -69,10 +69,14 @@ public class MenueTransformer
 						url = e.getAttributeValue("href");
 					} else {
 						url = urlPre + e.getAttributeValue("href").replace(".html", "");
-						url = url.replace("../", "../");
+						if (!url.startsWith("/documentation") && !url.startsWith("/site")) {
+							url = "/site" + url;
+						}
 					}
 					
 				}
+				
+				
 				if(url.endsWith("/")) {
 					bw.append(url.substring(0, url.length()-1));
 				} else {
