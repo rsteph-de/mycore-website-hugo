@@ -1,4 +1,4 @@
-# baseURL: "/data/temp/mycore-hugo/"
+# baseURL: "http://rosdok.uni-rostock.de/data/temp/mycore-hugo/"
 baseURL: "/"
 canonifyURLs: true
 theme: "mycore-bootstrap"
@@ -29,6 +29,14 @@ pygmentsUseClasses: true
 DefaultContentLanguage: de
 
 languages:
+    io:
+      params:
+        new_param: x
+      title: "MyCoRe Webseite"
+      description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
+      languageName: "Sample"
+      weight: 1
+      contentDir: content/io
     de:
       params:
         new_param: x
