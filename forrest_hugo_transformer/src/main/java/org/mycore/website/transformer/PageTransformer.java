@@ -230,10 +230,8 @@ public class PageTransformer {
 					preParentE.removeContent(e);
 				}
 				if (e.getName().equals("img")) {
-					Path pImageOld = Paths.get(
-							"C:\\workspaces\\mycore\\git\\mycore-documentation\\src\\documentation\\content\\xdocs");
-					Path pImageOld2 = Paths
-							.get("C:\\workspaces\\mycore\\git\\mycore-documentation\\src\\documentation\\resources");
+					Path pImageOld = Transformer.BASE_DIR.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
+					Path pImageOld2 = Transformer.BASE_DIR.resolve("mycore-documentation\\src\\documentation\\resources");
 
 					try {
 						Files.createDirectories(Transformer.P_OUTPUT_IMAGES);
