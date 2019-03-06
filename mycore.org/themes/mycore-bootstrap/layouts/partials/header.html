@@ -20,8 +20,8 @@
 			
 		        	{{ $currentPage := . }}
 		       		{{ range .Site.Menus.main }}
-						<a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (replace (print (relLangURL .URL) "/") "//" "/"))}} active {{ end }}'
-						href="{{ absLangURL .URL }}">{{ .Name }} </a>
+						<a class='nav-item nav-link {{ if (or (eq $currentPage.URL (print (relLangURL .URL))) (hasPrefix $currentPage.URL (print (relLangURL .URL) "/") ))}} active {{ end }}'
+						href="{{ absLangURL .URL }}">{{ .Name }}</a>
 					{{ end }}
 					</div>
 				</div>
