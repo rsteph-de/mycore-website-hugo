@@ -67,6 +67,8 @@ public class MenueTransformer
 			bw.append(Integer.toString(weight));
 			bw.append(", url: \"");
 			String url = "";
+			
+			//TODO Das ist Quatsch (Vergleich von el.getName() mit el), Was stand hier vorher?
 			if(!e.getParentElement().getName().equals(el) && el.getAttribute("href") != null) {
 				if(e.getAttribute("href")!=null) {
 					if(e.getAttributeValue("href").startsWith("http")) {
@@ -77,7 +79,6 @@ public class MenueTransformer
 							url = "/site" + url;
 						}
 					}
-					
 				}
 				
 				

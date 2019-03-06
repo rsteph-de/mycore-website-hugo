@@ -1,14 +1,11 @@
 package org.mycore.website.transformer;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +17,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.Namespace;
 import org.jdom2.Text;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.input.sax.XMLReaders;
 import org.jdom2.output.XMLOutputter;
 import org.yaml.snakeyaml.Yaml;
 
@@ -93,6 +91,9 @@ public class PageTransformer {
 					Files.move(pEn, pEn.getParent().resolve(id + ".html"));
 				}
 				map.put("url", url.substring(0, url.lastIndexOf("/") + 1) + id);
+				if(map.get("url").equals("/site/welcome")){
+					map.put("url", "/");
+				}
 			}
 		}
 		Yaml yaml = new Yaml();
@@ -154,7 +155,7 @@ public class PageTransformer {
 		if (p.getFileName().toString().endsWith(".xml")) {
 			try {
 				SAXBuilder sax = new SAXBuilder();
-				sax.setValidation(false);
+				sax.setXMLReaderFactory(XMLReaders.NONVALIDATING);
 				sax.setFeature("http://xml.org/sax/features/validation", false);
 				sax.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
 				sax.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
