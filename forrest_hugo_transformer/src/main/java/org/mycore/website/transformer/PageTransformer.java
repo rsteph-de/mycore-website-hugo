@@ -74,7 +74,7 @@ public class PageTransformer {
 		List<Map<String, Object>> entries = (List<Map<String, Object>>) menueData.get("main");
 		for (Map<String, Object> map : entries) {
 			String id = map.get("identifier").toString();
-			if(id.equals("mir_release_2018")) {
+			if (id.equals("mir_release_2018")) {
 				System.out.print("stop");
 			}
 			String url = map.get("url").toString();
@@ -106,8 +106,7 @@ public class PageTransformer {
 				try (BufferedWriter writer = Files.newBufferedWriter(p)) {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
-						// TODO s = s.replace("<img src=\"images/_generated", "<img src='{{ relURL
-						// \"images/_generated");
+						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"", "<img src='{{< relURL \"$1\" >}}'");
 						writer.newLine();
 						writer.write(s);
 					}
@@ -122,12 +121,12 @@ public class PageTransformer {
 	private Object createIndexMD(Path p) {
 		try {
 			if (Files.exists(p.resolve("index.html"))) {
-				if(Arrays.asList("overview", "contact").contains(p.getFileName().toString())) {
+				if (Arrays.asList("overview", "contact").contains(p.getFileName().toString())) {
 					Files.move(p.resolve("index.html"), p.resolve(p.getFileName().toString() + ".html"));
 				} else {
 					Files.move(p.resolve("index.html"), p.resolve("_index.html"));
 				}
-				
+
 			} else {
 				if (!Arrays.asList("de", "en").contains(p.getFileName().toString())) {
 					Files.write(p.resolve("_index.md"), "".getBytes());
@@ -175,7 +174,7 @@ public class PageTransformer {
 					if (doc.getRootElement().getName().equals("document") == true) {
 						createHeader(writer, doc.getRootElement().getChild("header"));
 						Element outputE = doc.getRootElement().getChild("body");
-						createBody(outputE, 1);
+						createBody(outputE, 1, targetSubPath);
 						XMLOutputter out = new XMLOutputter();
 						out.output(outputE.getContent(), writer);
 					}
@@ -187,7 +186,7 @@ public class PageTransformer {
 		return null;
 	}
 
-	private void createBody(Element eSource, int level) {
+	private void createBody(Element eSource, int level, Path targetSubPath) {
 		int newLevel = level;
 		for (int i = 0; i < eSource.getContent().size(); i++) {
 			Content c = eSource.getContent(i);
@@ -205,7 +204,7 @@ public class PageTransformer {
 						&& e.getAttributeValue("href").startsWith("site:")) {
 					replaceSiteByRef(e);
 				}
-				createBody(e, newLevel);
+				createBody(e, newLevel, targetSubPath);
 				if (e.getName().equals("pre")) {
 					Element preParentE = e.getParentElement();
 					String lang = "text";
@@ -229,12 +228,29 @@ public class PageTransformer {
 					preParentE.addContent(preParentE.getContent().indexOf(e), new Text("{{< /highlight >}}"));
 					preParentE.removeContent(e);
 				}
+				
 				if (e.getName().equals("img")) {
-					Path pImageOld = Transformer.BASE_DIR.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
-					Path pImageOld2 = Transformer.BASE_DIR.resolve("mycore-documentation\\src\\documentation\\resources");
+					Path pImageOld = Transformer.BASE_DIR
+							.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
+					Path pImageOld2 = Transformer.BASE_DIR
+							.resolve("mycore-documentation\\src\\documentation\\resources");
 
+					String imageFolder = "";
+					if (!targetSubPath.toString().isEmpty()) {
+						String[] targetSubPathSplit = targetSubPath.toString().split("\\\\");
+						if (targetSubPathSplit.length > 1) {
+							imageFolder = targetSubPathSplit[0] + "\\" + targetSubPathSplit[1] + "\\";
+						} else if (targetSubPathSplit.length == 0) {
+							imageFolder = targetSubPathSplit[0] + "\\";
+						}
+						if (!targetSubPath.toString().startsWith("documentation")) {
+							imageFolder = "site\\" + targetSubPathSplit[0] + "\\";
+						}
+					}
+					imageFolder = imageFolder.replace("\\", "/");
+					
 					try {
-						Files.createDirectories(Transformer.P_OUTPUT_IMAGES);
+						Files.createDirectories(Transformer.P_OUTPUT_IMAGES.resolve(imageFolder));
 						String src = e.getAttributeValue("src");
 						if (src.startsWith("/")) {
 							src = src.substring(1);
@@ -245,14 +261,14 @@ public class PageTransformer {
 						}
 
 						if (Files.exists(pImageOld.resolve(src))) {
-							Files.copy(pImageOld.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(filename),
+							Files.copy(pImageOld.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "{{urlRef /images/_generated/" + filename + "}}");
+							e.setAttribute("src", "/images/_generated/"+imageFolder + filename);
 
 						} else if (Files.exists(pImageOld2.resolve(src))) {
-							Files.copy(pImageOld2.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(filename),
+							Files.copy(pImageOld2.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "{{urlRef /images/_generated/" + filename + " }}");
+							e.setAttribute("src", "/images/_generated/" +imageFolder + filename);
 						} else {
 							System.err.println("Bild nicht gefunden! " + e.getAttributeValue("src"));
 						}
