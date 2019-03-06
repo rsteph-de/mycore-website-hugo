@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -45,6 +46,9 @@ public class MenueTransformer
 		int weight = -100;
 		
 		for(Element e : el.getChildren()) {
+			if(Arrays.asList("imprint", "contact", "privacy").contains(e.getName())) {
+				continue;
+			}
 			bw.append("  -");
 			for(int i = 0; i<level; i++) {
 				bw.append("   ");
