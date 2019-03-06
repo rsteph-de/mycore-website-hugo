@@ -106,7 +106,7 @@ public class PageTransformer {
 				try (BufferedWriter writer = Files.newBufferedWriter(p)) {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
-						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"", "<img src='{{< relURL \"$1\" >}}'");
+						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"", "<img src='{{< urlRef \"$1\" >}}'");
 						writer.newLine();
 						writer.write(s);
 					}
