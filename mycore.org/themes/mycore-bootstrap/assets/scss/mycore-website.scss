@@ -49,6 +49,16 @@ figure h4{
 .mcr-toc ul > li > ul > li{
 	font-weight:normal;
 }
+img.mcr-flag{
+	height:2.5em;
+}
+img.mcr-flag.active{
+	border-bottom:2px solid white;
+}
+
+img.mcr-flag:hover{
+	border-bottom:2px solid orange;
+}
 
 .mcr-footer {
 	font-size:0.8rem;

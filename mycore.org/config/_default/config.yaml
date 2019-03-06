@@ -31,27 +31,27 @@ DefaultContentLanguage: de
 languages:
     io:
       params:
-        new_param: x
+        flag: "images/flags/iconfinder_Wales_92423.png"
       title: "MyCoRe Webseite"
       description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
-      languageName: "Sample"
+      languageName: "Beispielseiten"
       weight: 1
       contentDir: content/io
     de:
       params:
-        new_param: x
+        flag: "images/flags/iconfinder_Germany_92095.png"
       title: "MyCoRe Webseite"
       description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
       languageName: "Deutsch"
-      weight: 1
+      weight: 2
       contentDir: content/de
     en:
       params:
-        new_param: x
+        flag: "images/flags/iconfinder_United-Kingdom_92403.png"
       title: "MyCoRe Homepage"
       description: "The Framework to present and manage digital contents."
       languageName: "English"
-      weight: 2
+      weight: 3
       contentDir: content/en
 
 summaryLength: 37
