@@ -107,6 +107,13 @@ public class PageTransformer {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
 						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"", "<img src='{{< urlRef \"$1\" >}}'");
+						
+						// replaces refs, because files do not yet exist in english pages
+						if(p.toString().replace("//", "\"").contains("\\en\\")) {
+							s = s.replace("{{< ref mir >}}", "{{***TODO*** ref mir ***}}");
+							s = s.replace("{{< ref map >}}", "{{***TODO*** ref map ***}}");
+						}
+						
 						writer.newLine();
 						writer.write(s);
 					}
