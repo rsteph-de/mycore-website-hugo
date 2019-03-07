@@ -9,8 +9,8 @@ DefaultContentLanguage: de
 languages:
     io:
       params:
-        flag: "images/flags/iconfinder_Wales_92423.png"
-      title: "MyCoRe Webseite"
+        flag: "images/flags/iconcreated_MyCoRe_Construction.png"
+      title: "MyCoRe Webseite Entwurf / Testseite"
       description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
       languageName: "Beispielseiten"
       weight: 1
