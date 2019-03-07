@@ -72,7 +72,7 @@ public class PageTransformer {
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> entries = (List<Map<String, Object>>) menueData.get("main");
 		Iterator<Map<String, Object>> it = entries.iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Map<String, Object> map = it.next();
 			String id = map.get("identifier").toString();
 			String url = map.get("url").toString();
@@ -91,12 +91,12 @@ public class PageTransformer {
 					Files.move(pEn, pEn.getParent().resolve(id + ".html"));
 				}
 				map.put("url", url.substring(0, url.lastIndexOf("/") + 1) + id);
-				if(map.get("url").equals("/site/welcome")){
+				if (map.get("url").equals("/site/welcome")) {
 					map.put("url", "/");
 				}
-				
+
 			}
-			if(Arrays.asList("imprint", "contact", "privacy").contains(map.get("identifier"))) {
+			if (Arrays.asList("imprint", "contact", "privacy").contains(map.get("identifier"))) {
 				it.remove();
 			}
 		}
@@ -111,14 +111,15 @@ public class PageTransformer {
 				try (BufferedWriter writer = Files.newBufferedWriter(p)) {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
-						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"", "<img src='{{< urlRef \"$1\" >}}'");
-						
+						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"",
+								"<img src='{{< urlRef \"$1\" >}}'");
+
 						// replaces refs, because files do not yet exist in english pages
-						if(p.toString().replace("//", "\"").contains("\\en\\")) {
+						if (p.toString().replace("//", "\"").contains("\\en\\")) {
 							s = s.replace("{{< ref mir >}}", "{{***TODO*** ref mir ***}}");
 							s = s.replace("{{< ref map >}}", "{{***TODO*** ref map ***}}");
 						}
-						
+
 						writer.newLine();
 						writer.write(s);
 					}
@@ -240,12 +241,10 @@ public class PageTransformer {
 					preParentE.addContent(preParentE.getContent().indexOf(e), new Text("{{< /highlight >}}"));
 					preParentE.removeContent(e);
 				}
-				
+
 				if (e.getName().equals("img")) {
-					Path pImageOld = Transformer.BASE_DIR
-							.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
-					Path pImageOld2 = Transformer.BASE_DIR
-							.resolve("mycore-documentation\\src\\documentation\\resources");
+					Path pImageOld = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
+					Path pImageOld2 = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\resources");
 
 					String imageFolder = "";
 					if (!targetSubPath.toString().isEmpty()) {
@@ -260,7 +259,7 @@ public class PageTransformer {
 						}
 					}
 					imageFolder = imageFolder.replace("\\", "/");
-					
+
 					try {
 						Files.createDirectories(Transformer.P_OUTPUT_IMAGES.resolve(imageFolder));
 						String src = e.getAttributeValue("src");
@@ -273,14 +272,16 @@ public class PageTransformer {
 						}
 
 						if (Files.exists(pImageOld.resolve(src))) {
-							Files.copy(pImageOld.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
+							Files.copy(pImageOld.resolve(src),
+									Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "/images/_generated/"+imageFolder + filename);
+							e.setAttribute("src", "/images/_generated/" + imageFolder + filename);
 
 						} else if (Files.exists(pImageOld2.resolve(src))) {
-							Files.copy(pImageOld2.resolve(src), Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
+							Files.copy(pImageOld2.resolve(src),
+									Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "/images/_generated/" +imageFolder + filename);
+							e.setAttribute("src", "/images/_generated/" + imageFolder + filename);
 						} else {
 							System.err.println("Bild nicht gefunden! " + e.getAttributeValue("src"));
 						}

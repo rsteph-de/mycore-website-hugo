@@ -16,10 +16,8 @@ import org.jdom2.input.SAXBuilder;
 import org.yaml.snakeyaml.Yaml;
 
 public class MenueTransformer {
-	private static Path P_INPUT = Transformer.BASE_DIR
-			.resolve("mycore-documentation\\src\\documentation\\content\\xdocs\\site.xml");
-	private static Path P_OUTPUT = Transformer.BASE_DIR
-			.resolve("mycore-website-hugo\\mycore.org\\config\\_default\\menus.de.yaml");
+	private static Path P_INPUT = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs\\site.xml");
+	private static Path P_OUTPUT = Transformer.BASE_DIR_TARGET.resolve("mycore.org\\config\\_default\\menus.de.yaml");
 
 	public static void main(String[] args) {
 		MenueTransformer a = new MenueTransformer();

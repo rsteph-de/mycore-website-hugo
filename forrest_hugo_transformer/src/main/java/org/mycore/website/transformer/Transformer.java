@@ -11,13 +11,14 @@ import java.util.List;
 
 public class Transformer {
 	public static Path BASE_DIR = Paths.get("C:\\workspaces\\mycore\\git");
+	public static Path BASE_DIR_SOURCE =  BASE_DIR.resolve("mycore-documentation");
+	public static Path BASE_DIR_TARGET =  BASE_DIR.resolve("mycore-website-hugo");
 	
-	
-	public static Path P_INPUT = BASE_DIR.resolve("mycore-documentation\\src\\documentation\\content\\xdocs");
-	public static Path P_OUTPUT_DE = BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\de");
-	public static Path P_OUTPUT_EN = BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\en");
-	public static Path P_OUTPUT_IMAGES = BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\static\\images\\_generated");
-	public static Path P_MENUE = BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\config\\_default\\menus.de.yaml");
+	public static Path P_INPUT = BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
+	public static Path P_OUTPUT_DE = BASE_DIR_TARGET.resolve("mycore.org\\content\\de");
+	public static Path P_OUTPUT_EN = BASE_DIR_TARGET.resolve("mycore.org\\content\\en");
+	public static Path P_OUTPUT_IMAGES = BASE_DIR_TARGET.resolve("mycore.org\\static\\images\\_generated");
+	public static Path P_MENUE = BASE_DIR_TARGET.resolve("mycore.org\\config\\_default\\menus.de.yaml");
 	public static List<Path> IGNORE = Arrays.asList(Paths.get("index.de.xml"), Paths.get("index.en.xml"));
 	public static List<String> IGNORE_REF = Arrays.asList("appdev_2_1", "howtoget", "docportal", "sessions_2_1", "version_2_2", "version_2_1", "news");
 
@@ -46,8 +47,8 @@ public class Transformer {
 			MenueTransformer.main(new String[0]);
 			PageTransformer.main(new String[0]);
 
-			Files.copy(BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\io\\_index.html"),
-					BASE_DIR.resolve("mycore-website-hugo\\mycore.org\\content\\de\\_index.html"));
+			Files.copy(BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\_index.html"),
+					BASE_DIR_TARGET.resolve("mycore.org\\content\\de\\_index.html"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
