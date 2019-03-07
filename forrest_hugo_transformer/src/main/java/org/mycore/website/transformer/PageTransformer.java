@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.jdom2.CDATA;
 import org.jdom2.Content;
@@ -187,7 +188,7 @@ public class PageTransformer {
 					if (doc.getRootElement().getName().equals("document") == true) {
 						createHeader(writer, doc.getRootElement().getChild("header"));
 						Element outputE = doc.getRootElement().getChild("body");
-						createBody(outputE, 1, targetSubPath);
+						createBody(outputE, new AtomicInteger(1), targetSubPath);
 						XMLOutputter out = new XMLOutputter();
 						out.output(outputE.getContent(), writer);
 					}
@@ -199,25 +200,25 @@ public class PageTransformer {
 		return null;
 	}
 
-	private void createBody(Element eSource, int level, Path targetSubPath) {
-		int newLevel = level;
+	private void createBody(Element eSource, AtomicInteger level, Path targetSubPath) {
 		for (int i = 0; i < eSource.getContent().size(); i++) {
 			Content c = eSource.getContent(i);
 			if (c.getCType() == Content.CType.Element) {
 				Element e = (Element) c;
 				e.setNamespace(Namespace.NO_NAMESPACE);
-				if (e.getName().equals("section")) {
+				String oldName = e.getName();
+				if (oldName.equals("section")) {
 					e.setName("div");
-					newLevel++;
+					level.incrementAndGet();
 				}
 				if (e.getName().equals("title")) {
-					e.setName("h" + Integer.toString(Math.min(newLevel, 6)));
+					e.setName("h" + Integer.toString(Math.min(level.get(), 6)));
 				}
 				if (e.getName().equals("a") && e.getAttribute("href") != null
 						&& e.getAttributeValue("href").startsWith("site:")) {
 					replaceSiteByRef(e);
 				}
-				createBody(e, newLevel, targetSubPath);
+				createBody(e, level, targetSubPath);
 				if (e.getName().equals("pre")) {
 					Element preParentE = e.getParentElement();
 					String lang = "text";
@@ -295,6 +296,9 @@ public class PageTransformer {
 				if (e.getName().equals("span") && e.getAttribute("class") != null
 						&& e.getAttributeValue("class").equals("klein")) {
 					e.setAttribute("class", "small");
+				}
+				if (oldName.equals("section")) {
+					level.decrementAndGet();
 				}
 
 			}
