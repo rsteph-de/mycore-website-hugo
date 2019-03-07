@@ -8,13 +8,6 @@ main:
   -     {identifier: features_interfaces,		parent: features, 			name: Schnittstellen,		weight: -850,	url: /features/interfaces			}
   -     {identifier: features_derivates,		parent: features, 			name: Dateiverwaltung, 		weight: -840, 	url: /features/derivates			}
   -     {identifier: features_acl,				parent: features,			name: Rechteverwaltung, 	weight: -830, 	url: /features/acl					}
-  
-  -     {identifier: applications,			    					        name: Beispiele,       		weight: -700,	url: /applications					}
-  -     {identifier: applications_demo,		    parent: applications,       name: Demo,            		weight: -710,	url: /applications/index.html		}
-  -     {identifier: applications_map,     		parent: applications,      	name: Karte,			    weight: -720,	url: /applications/map.html			}
-  -     {identifier: applications_list,			parent: applications,		name: "Anwendungen von A-Z",weight: -730,   url: /applications/list.html		}
- 
-  -   {identifier: download,												name: Download,				weight: -600,	url: /download						}
  
   -   {identifier: documentation,											name: Dokumentation,				weight: -500,	url: /documentation									}
   -     {identifier: getting_started,			parent: documentation,		name: Mit MyCoRe Starten,			weight: -490,	url: /documentation/getting_started					}
@@ -24,6 +17,6 @@ main:
   -       {identifier: mcr_properties,			parent: getting_started,	name: Konfiguration & Properties,	weight: -486,	url: /documentation/getting_started/mcr_properties  } 
   -       {identifier: requirements,			parent: getting_started,	name: Systemanforderungen,			weight: -485,	url: /documentation/getting_started/requirements  } 
 
-  -   {identifier: support,													name: Organisation,					weight: -400,	url: /support	}
-  
+  -   {identifier: doc_transform,											name: Webseiten-Migration,			weight: -400,	url: /doc_transform									}
+
   -   {identifier: blog,													name: BLOG,							weight: -300,	url: /blog		}
