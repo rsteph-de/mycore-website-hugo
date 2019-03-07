@@ -47,8 +47,11 @@ public class Transformer {
 			MenueTransformer.main(new String[0]);
 			PageTransformer.main(new String[0]);
 
-			Files.copy(BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\_index.html"),
+			Files.copy(BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\_source\\de._index.html"),
 					BASE_DIR_TARGET.resolve("mycore.org\\content\\de\\_index.html"));
+			
+			Files.copy(BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\_source\\en._index.html"),
+					BASE_DIR_TARGET.resolve("mycore.org\\content\\en\\_index.html"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
