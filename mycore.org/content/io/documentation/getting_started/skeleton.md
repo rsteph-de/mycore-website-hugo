@@ -120,7 +120,7 @@ Nachdem das Anwendungsskelett eingerichtet und initial gebaut wurde, ist es an d
 genaueren Blick auf die Verzeichnisse und Dateien zu werfen. Um nun ausgehend von diesem
 Anwendungsskelett zur eigenen Anwendung zu kommen, ist es notwendig zu verstehen, wo was steht.
 
-{{< figure src="images/documentation/getting_started/dir-structure.png"  title="Verzeichnisstruktur des Skeleton-Moduls im Überblick" width="75%" >}}
+{{< figure src="/images/io/documentation/getting_started/dir-structure.png"  title="Verzeichnisstruktur des Skeleton-Moduls im Überblick" width="75%" >}}
 
 In der nachfolgenden Schritt-für-Schritt-Anleitung wird genauer in die einzelnen Bereiche geschaut.
 Grob kann man jedoch sagen:
@@ -171,7 +171,7 @@ Um eigene Erfasssungsmasken zu erstellen, muss als erstes das HTML-Formular nach
 Dies kann z.B. mit Bootstrap und unter Verwendung des <a href="http://bootsnipp.com/forms?version=3">FormBuilder für Bootstrap 3</a>
 realisiert werden.
 
-{{< figure src="images/documentation/getting_started/formbuilder.png"  title="Schnell zum Bootstrap-Formular mit dem Formbuilder" width="75%" >}}
+{{< figure src="/images/io/documentation/getting_started/formbuilder.png"  title="Schnell zum Bootstrap-Formular mit dem Formbuilder" width="75%" >}}
 
 <span class="label label-warning">Achtung:</span> Der Formbuilder setzt <code>name</code>-Attribute für Buttons, Input-Felder, etc.
 Diese kann der XEditor nicht verarbeiten und produziert Fehler. Diese Attribute also bitte unbedingt entfernen!
