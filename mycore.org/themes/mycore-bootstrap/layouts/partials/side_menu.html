@@ -6,40 +6,40 @@
     	<div class="">
 			{{ $currentPage := . }}
 		    {{ range .Site.Menus.main }}
-				{{ if or ($.IsMenuCurrent "main" .)  (hasPrefix $currentPage.URL (print .URL "/"))}} 
+				{{ if or ($.IsMenuCurrent "main" .)  (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} 
 					
 					<h5 class="no-TOC"><a class='nav-item nav-link' href="{{ absLangURL .URL }}">{{ .Name }}</a></h5>
 					{{ if .HasChildren }}
 					<ul>
 						{{ range .Children }}
-							<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+							<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} active {{ end }}'
 								data-toggle='{{ if .HasChildren}}collapse{{ end }}'
 								href='{{ if .HasChildren }}{{ (print "#" .Identifier) }}{{ else }}{{relLangURL .URL}}{{end}}'>
 								{{ .Name }}</a></li>
 							{{ if .HasChildren }}
 							<ul id='{{ .Identifier }}'
-							     class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
+							     class='collapse {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} show {{ end }}'>
 								{{ range .Children }}
-								<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+								<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} active {{ end }}'
 								       data-toggle='{{ if .HasChildren}} collapse{{ end }}'
 								       href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
 								       {{ .Name }}</a></li>
 							      {{ if .HasChildren }}
 							        <ul id='{{ .Identifier }}'
-							            class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
+							            class='collapse {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} show {{ end }}'>
 										{{ range .Children }}
-											<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+											<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} active {{ end }}'
 								       			   data-toggle='{{ if .HasChildren}} collapse{{ end }}'
 								       			   href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
 								       			   {{ .Name }}</a></li>
 								            {{ if .HasChildren }}
 							        			<ul id='{{ .Identifier }}'
-							            			class='collapse {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} show {{ end }}'>
+							            			class='collapse {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} show {{ end }}'>
 													{{ range .Children }}
-														<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print .URL "/"))}} active {{ end }}'
+														<li><a class='nav-item nav-link {{ if (hasPrefix $currentPage.URL (print  (relLangURL .URL) "/"))}} active {{ end }}'
 								       			   			data-toggle='{{ if .HasChildren}} collapse{{ end }}'
 								       			   			href='{{ if .HasChildren }} {{ (print "#" .Identifier) }} {{ else }} {{ (print (absLangURL .URL)) }} {{ end }}'>
-								       			   			{{ .Name }}</a></li>	   
+								       			   			{{ .Name }}</a></li>
 								         			{{ end }}
 								     			</ul>
 								  			{{ end }}	   
