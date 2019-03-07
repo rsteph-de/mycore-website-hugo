@@ -76,7 +76,7 @@ public class PageTransformer {
 			Map<String, Object> map = it.next();
 			String id = map.get("identifier").toString();
 			String url = map.get("url").toString();
-			if (!url.startsWith("http://")) {
+			if (!url.startsWith("http://") && url.length() > 1) {
 				Path pDe = Transformer.P_OUTPUT_DE.resolve(url.substring(1) + ".html");
 				if (pDe.getFileName().toString().contains("#")) {
 					continue;
