@@ -11,7 +11,7 @@ p {
 }
 
 p a, li a {
-	text-decoration:underline !important;
+	text-decoration:underline;
 	color: darkblue;
 }
 
@@ -37,6 +37,7 @@ figure h4{
 .mcr-toc a{
 	color:darkgrey;
 	font-size:small;
+	text-decoration:none !important;
 }
 .mcr-toc ul{
 	padding-left:20px;
