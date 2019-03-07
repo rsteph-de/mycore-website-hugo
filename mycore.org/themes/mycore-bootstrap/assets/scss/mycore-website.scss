@@ -39,12 +39,26 @@ figure h4{
 	font-size:small;
 }
 .mcr-toc ul{
-	padding-left:15px;
-	list-style-type: '\25B8 \0020';
+	padding-left:20px;
+	// works only in Firefox: list-style-type: '\25B8 \0020';
+	// makes position:absolute on li::before obsolete;
+	list-style-type:none;
+	position:relative;
 }
 
+.mcr-toc li{
+	line-height:1em;
+	padding:0.15em 0em;
+}
 .mcr-toc ul > li{
 	font-weight:bold;
+
+}
+
+.mcr-toc ul > li::before{
+	content: '\25B8 \0020';
+	position:absolute;
+	left:0em;
 }
 .mcr-toc ul > li > ul > li{
 	font-weight:normal;
