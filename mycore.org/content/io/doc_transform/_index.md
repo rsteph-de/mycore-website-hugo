@@ -15,23 +15,16 @@ date: "2019-03-07"
 	* CSS- und Javascript-Frameworks (Bootstrap, Fontawesome, JQuery) werden aus Webjars (aus Maven-Repositories) extrahiert
 	
 
-### Transformer starten
-
-* in Transformer.java Pfade anpassen (<code>BASE_DIR</code>...)
-* Transformer.java ausführen
-
 ### Hugo starten
 
 {{< highlight cmd >}}
 cd …\git\mycore-website-hugo\mycore.org
-{{< / highlight >}}
-{{< highlight cmd >}}
-…\git\mycore-website-hugo\mycore.org>hugo server
+…\git\mycore-website-hugo\mycore.org> hugo server
 {{< / highlight >}}
 **oder:**
 
 {{< highlight cmd >}}
-…\git\mycore-website-hugo\mycore.org>hugo server –D –disableFastRender
+…\git\mycore-website-hugo\mycore.org> hugo server –D –disableFastRender
 {{< / highlight >}}
 
 * -D … Draft-Modus = baut auch alle Seiten mit draft = true)
@@ -42,8 +35,16 @@ bei Git PULL „verschluckt sich der Server manchmal“ &#8594; Server neustarte
 [http://localhost:1313](http://localhost:1313)
 
 ## Transformer
+Zur automatischen Konvertierung der Forrest-Webseite wurde ein Java-Programm erstellt.
+Es befindet sich als eigenständiges Maven-Projekt im Unterordner <code>forrest_hugo_transformer</code>
 
-* löscht den <code>P_OUTPUT_DE</code>, <code>P_OUTPUT_EN</code> und <code>P_OUTPUT_IMAGES</code> Pfad
+### Transformer starten
+
+* in Transformer.java Pfade anpassen (<code>BASE_DIR</code>...)
+* Transformer.java ausführen
+
+* löscht im <code>content</code>-Verzeichnis die Ornder <code>de</code> und <code>en</code>, den Ordner 
+  <code>/static/images/_generated</code> und die Datei <code>/config/_default/menus.de.yaml</code>.
 * startet **MenueTransformer** und **PageTransformer**
 
 ### MenueTransformer
@@ -123,7 +124,7 @@ main:
 		* alt: .../features/datamodel.html
 		* neu: .../site/features/datamodel/
 * *".xml"* wird zu *".html"*
-* Eingruppierung in ".../content/de/..." oder ".../content/en/..." anhand Dateien mit *".de."* oder *".en."*
+* Einsortierung in ".../content/de/..." oder ".../content/en/..." anhand Dateien mit *".de."* oder *".en."*
 	* *".de."* und *".en."* wird entfernt
 
 #### Header
@@ -182,7 +183,16 @@ Der Body der Datei wird eingelesen und migriert
 		* *neu:* <code>\<img src='{{&lt; urlRef "/images/_generated/documentation/getting_started/wizard_token.png" &gt;}}'</code>
 * Links: <code>\<a href="site:hibernate"\></code> &#8594; <code>\<a href="{{&lt; ref hibernate &gt;}}"\></code>
 
-## Was ist nach der Migration noch zu tun?
 
-### Was ist zu beachten / Wo sind noch Probleme?
 
+## Hugo compilieren
+ - ggf <code>baseURL</code> in <code>config.yaml</code> anpassen 
+ 
+{{< highlight cmd >}}
+cd …\git\mycore-website-hugo\mycore.org
+…\git\mycore-website-hugo\mycore.org> hugo
+{{< / highlight >}}
+
+  - Hugo ohne <code>server</code>-Parameter ausführen
+  - Hugo erstellt einen Ordner <code>public</code>
+  - Das Ergebnis ist **plain-HTML**, dass einfach auf den Webserver kopiert wird.

@@ -18,5 +18,6 @@ main:
   -       {identifier: requirements,			parent: getting_started,	name: Systemanforderungen,			weight: -485,	url: /documentation/getting_started/requirements  } 
 
   -   {identifier: doc_transform,											name: Webseiten-Migration,			weight: -400,	url: /doc_transform									}
+  -   {identifier: doc_transform_next,			parent: doc_transform,		name: Nächste Schritte,				weight: -380,	url: /doc_transform/next_steps								}
 
   -   {identifier: blog,													name: BLOG,							weight: -300,	url: /blog		}
