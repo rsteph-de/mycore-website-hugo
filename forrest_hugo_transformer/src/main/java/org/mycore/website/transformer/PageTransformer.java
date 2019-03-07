@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -70,11 +71,10 @@ public class PageTransformer {
 	private void editMenueAndFilenames() throws IOException {
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> entries = (List<Map<String, Object>>) menueData.get("main");
-		for (Map<String, Object> map : entries) {
+		Iterator<Map<String, Object>> it = entries.iterator();
+		while(it.hasNext()) {
+			Map<String, Object> map = it.next();
 			String id = map.get("identifier").toString();
-			if (id.equals("mir_release_2018")) {
-				System.out.print("stop");
-			}
 			String url = map.get("url").toString();
 			if (!url.startsWith("http://")) {
 				Path pDe = Transformer.P_OUTPUT_DE.resolve(url.substring(1) + ".html");
@@ -94,6 +94,10 @@ public class PageTransformer {
 				if(map.get("url").equals("/site/welcome")){
 					map.put("url", "/");
 				}
+				
+			}
+			if(Arrays.asList("imprint", "contact", "privacy").contains(map.get("identifier"))) {
+				it.remove();
 			}
 		}
 		Yaml yaml = new Yaml();

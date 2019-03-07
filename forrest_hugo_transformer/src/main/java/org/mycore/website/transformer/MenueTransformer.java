@@ -46,9 +46,6 @@ public class MenueTransformer
 		int weight = -100;
 		
 		for(Element e : el.getChildren()) {
-			if(Arrays.asList("imprint", "contact", "privacy").contains(e.getName())) {
-				continue;
-			}
 			bw.append("  -");
 			for(int i = 0; i<level; i++) {
 				bw.append("   ");
