@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.rmi.CORBA.Util;
+
 import org.jdom2.CDATA;
 import org.jdom2.Content;
 import org.jdom2.Document;
@@ -113,7 +115,7 @@ public class PageTransformer {
 					for (String s : lines) {
 						s = s.replace("{{&lt;", "{{<").replace("&gt;}}", ">}}");
 						s = s.replaceAll("<img src=\"(/images/_generated/.*?)\\s*\"",
-								"<img src='{{< urlRef \"$1\" >}}'");
+								"<img src='{{< relURL \"$1\" >}}'");
 
 						// replaces refs, because files do not yet exist in english pages
 						if (p.toString().replace("//", "\"").contains("\\en\\")) {
@@ -218,7 +220,7 @@ public class PageTransformer {
 						&& e.getAttributeValue("href").startsWith("site:")) {
 					replaceSiteByRef(e);
 				}
-				createBody(e, level, targetSubPath);
+				
 				if (e.getName().equals("pre")) {
 					Element preParentE = e.getParentElement();
 					String lang = "text";
@@ -243,56 +245,17 @@ public class PageTransformer {
 					preParentE.removeContent(e);
 				}
 
+				if (e.getName().equals("div") && e.getChild("img") != null) {
+					createFigure(e, targetSubPath);
+					continue;
+				}
 				if (e.getName().equals("img")) {
-					Path pImageOld = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
-					Path pImageOld2 = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\resources");
-
-					String imageFolder = "";
-					if (!targetSubPath.toString().isEmpty()) {
-						String[] targetSubPathSplit = targetSubPath.toString().split("\\\\");
-						if (targetSubPathSplit.length > 1) {
-							imageFolder = targetSubPathSplit[0] + "\\" + targetSubPathSplit[1] + "\\";
-						} else if (targetSubPathSplit.length == 0) {
-							imageFolder = targetSubPathSplit[0] + "\\";
-						}
-						if (!targetSubPath.toString().startsWith("documentation")) {
-							imageFolder = "site\\" + targetSubPathSplit[0] + "\\";
-						}
-					}
-					imageFolder = imageFolder.replace("\\", "/");
-
-					try {
-						Files.createDirectories(Transformer.P_OUTPUT_IMAGES.resolve(imageFolder));
-						String src = e.getAttributeValue("src");
-						if (src.startsWith("/")) {
-							src = src.substring(1);
-						}
-						String filename = src;
-						if (filename.contains("/")) {
-							filename = filename.substring(filename.lastIndexOf("/") + 1);
-						}
-
-						if (Files.exists(pImageOld.resolve(src))) {
-							Files.copy(pImageOld.resolve(src),
-									Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
-									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "/images/_generated/" + imageFolder + filename);
-
-						} else if (Files.exists(pImageOld2.resolve(src))) {
-							Files.copy(pImageOld2.resolve(src),
-									Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
-									StandardCopyOption.REPLACE_EXISTING);
-							e.setAttribute("src", "/images/_generated/" + imageFolder + filename);
-						} else {
-							System.err.println("Bild nicht gefunden! " + e.getAttributeValue("src"));
-						}
-
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+					String src = copyImage(e.getAttributeValue("src"), targetSubPath);
+					if(src != null) {
+						e.setAttribute("src", src);
 					}
 				}
-
+				createBody(e, level, targetSubPath);
 				if (e.getName().equals("span") && e.getAttribute("class") != null
 						&& e.getAttributeValue("class").equals("klein")) {
 					e.setAttribute("class", "small");
@@ -303,6 +266,89 @@ public class PageTransformer {
 
 			}
 		}
+	}
+
+	/**
+	 * {{< figure src="" caption="" count"" alt="" width="" >}}
+	 * 
+	 * @param e
+	 * @param targetSubPath
+	 */
+	private void createFigure(Element e, Path targetSubPath) {
+		String src = copyImage(e.getChild("img").getAttributeValue("src"), targetSubPath);
+		String caption = "";
+		String count = "";
+		String alt = "";
+		String width = "";
+		e.removeAttribute("style");
+		if (e.getChildText("span") != null) {
+			caption = e.getChildTextNormalize("span");
+			if (e.getChild("span").getChildText("strong") != null) {
+				count = e.getChild("span").getChildTextNormalize("strong");
+			}
+		}
+		
+		if (e.getChild("img").getAttributeValue("alt") != null) {
+			alt = e.getChild("img").getAttributeValue("alt").trim();
+		}
+		if (e.getChild("img").getAttributeValue("width") != null) {
+			width = e.getChild("img").getAttributeValue("width").trim();
+		}
+		String figure = "{{< figure src=\"" + src + "\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
+		e.setContent(new Text(figure));
+	}
+
+	private String copyImage(String src, Path targetSubPath) {
+		Path pImageOld = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
+		Path pImageOld2 = Transformer.BASE_DIR_SOURCE.resolve("src\\documentation\\resources");
+
+		String imageFolder = "";
+		if (!targetSubPath.toString().isEmpty()) {
+			String[] targetSubPathSplit = targetSubPath.toString().split("\\\\");
+			if (targetSubPathSplit.length > 1) {
+				imageFolder = targetSubPathSplit[0] + "\\" + targetSubPathSplit[1] + "\\";
+			} else if (targetSubPathSplit.length == 0) {
+				imageFolder = targetSubPathSplit[0] + "\\";
+			}
+			if (!targetSubPath.toString().startsWith("documentation")) {
+				imageFolder = "site\\" + targetSubPathSplit[0] + "\\";
+			}
+		}
+		imageFolder = imageFolder.replace("\\", "/");
+
+		try {
+			Files.createDirectories(Transformer.P_OUTPUT_IMAGES.resolve(imageFolder));
+			
+			if (src.startsWith("/")) {
+				src = src.substring(1);
+			}
+			String filename = src;
+			if (filename.contains("/")) {
+				filename = filename.substring(filename.lastIndexOf("/") + 1);
+			}
+
+			if (Files.exists(pImageOld.resolve(src))) {
+				Files.copy(pImageOld.resolve(src),
+						Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
+						StandardCopyOption.REPLACE_EXISTING);
+				return "/images/_generated/" + imageFolder + filename;
+
+			}
+			if (Files.exists(pImageOld2.resolve(src))) {
+				Files.copy(pImageOld2.resolve(src),
+						Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
+						StandardCopyOption.REPLACE_EXISTING);
+				return "/images/_generated/" + imageFolder + filename;
+			}
+			
+			System.err.println("Bild nicht gefunden! " + src);
+			
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return null;
 	}
 
 	private void replaceSiteByRef(Element e) {
