@@ -377,7 +377,7 @@ public class PageTransformer {
 			}
 			if (e.getChild("release") != null) {
 				String release = "";
-				writer.append("\nmcr_versions: [");
+				writer.append("\nmcr_version: [");
 				for (Element dateE : e.getChildren("release")) {
 					release = release + "'" + dateE.getText() + "',";
 				}

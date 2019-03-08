@@ -160,7 +160,7 @@ main:
 ---
 
 title: "Systemanforderungen"
-mcr_versions: ['2017.06','2018.06']
+mcr_version: ['2017.06','2018.06']
 authors: Jens Kupferschmidt, Kathleen Neumann
 description: "
       MyCoRe ist eine betriebssystemunabhängige Java-Anwendung und bringt bereits viele Komponenten mit. Einige
