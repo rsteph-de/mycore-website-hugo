@@ -53,7 +53,7 @@ Der in JavaScript implementierte, integrierte Image Viewer zeigt die Grafik dann
 Der Image Viewer erlaubt das Skalieren von Bildern (Zoomen) und das Blättern durch die Bilder eines Dateibereichs.
 Über ein Thumbnail kann in großen Bildern navigiert werden.
 
-{{< figure src="/images/io/features/imageviewer.png"  title="Anzeige verschiedener Bildformate im Bildbetrachter" width="100%" >}}
+{{< mcr-figure src="/images/io/features/imageviewer.png"  title="Anzeige verschiedener Bildformate im Bildbetrachter" width="100%" >}}
 
 ## METS-Editor
 
@@ -76,7 +76,7 @@ Der Nutzer kann frei im Videostrom navigieren oder direkt über die URL
 bestimmte Stellen ansteuern. In der Weboberfläche können aus dem
 Streaming-Server gewonnene technische Metadaten wie Bitrate, Framerate und Abspieldauer angezeigt werden.
 
-{{< figure src="/images/io/features/videostreaming.png"  title="Anzeige multimedialer Daten" width="100%" >}}
+{{< mcr-figure src="/images/io/features/videostreaming.png"  title="Anzeige multimedialer Daten" width="100%" >}}
 
 Unterstützt wird zur Zeit der
 [Helix Universal Server (Real)](https://helix-server.helixcommunity.org/"Helix Community")

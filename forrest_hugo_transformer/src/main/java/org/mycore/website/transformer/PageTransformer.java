@@ -269,7 +269,7 @@ public class PageTransformer {
 	}
 
 	/**
-	 * {{< figure src="" caption="" count"" alt="" width="" >}}
+	 * {{< mcr-figure src="" caption="" count"" alt="" width="" >}}
 	 * 
 	 * @param e
 	 * @param targetSubPath
@@ -294,7 +294,7 @@ public class PageTransformer {
 		if (e.getChild("img").getAttributeValue("width") != null) {
 			width = e.getChild("img").getAttributeValue("width").trim();
 		}
-		String figure = "{{< figure src=\"" + src + "\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
+		String figure = "{{< mcr-figure src=\"" + src + "\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
 		e.setContent(new Text(figure));
 	}
 
