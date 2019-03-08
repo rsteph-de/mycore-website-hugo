@@ -61,7 +61,7 @@ Zur Konfiguration der Datenbank muss die <code>hibernate.cfg.xml</code> im
 [MyCoRe-Konfigurationsverzeichnis]({{< ref "/documentation/getting_started/mcr_properties.md" >}})
 angepasst werden (siehe [Datenbank / Hibernate]({{< ref "/documentation/archiv/version2015/hibernate.md" >}})).
 
-{{<mcr/versions>}}seit 2016.03{{</mcr/versions>}} wird die Datenbank in der
+{{<mcr_versions>}}seit 2016.03{{</mcr_versions>}} wird die Datenbank in der
 <code>persistence.xml</code> unter <code>resources/META-INF</code> konfiguriert.
 
 #### Solr konfigurieren

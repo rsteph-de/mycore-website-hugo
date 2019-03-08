@@ -51,7 +51,7 @@ Es befindet sich als eigenständiges Maven-Projekt im Unterordner <code>forrest_
 
 * erstellt aus der *"site.xml"* die *"menus.de.yaml"*
 
-**Alt:** *"site.xml"*
+**alt:** *"site.xml"*
 {{< highlight xml "linenos=table, linenostart=23" >}}
 <site label="MyCoRe Website" href="" xmlns="http://apache.org/forrest/linkmap/1.0">
 
@@ -87,7 +87,7 @@ Es befindet sich als eigenständiges Maven-Projekt im Unterordner <code>forrest_
 ...
 {{< / highlight >}}
 
-**Neu:** *"menus.de.yaml"*
+**neu:** *"menus.de.yaml"*
 {{< highlight yaml "linenos=table">}}
 main:
 - {identifier: welcome, name: Start, weight: -99, url: /}
@@ -180,7 +180,7 @@ Der Body der Datei wird eingelesen und migriert
 	* Kopieren der Bilder in den Pfaden *"src/documentation/content/xdocs"* und *"src/documentation/resources"*
 	* Neuer Pfad *"/static/images/_generated"*
 		* *alt:* <code>\<img src="images/mir/wizard_token.png"\></code> 
-		* *neu:* <code>\<img src='{{&lt; urlRef "/images/_generated/documentation/getting_started/wizard_token.png" &gt;}}'</code>
+		* *neu:* <code>\<img src='{{&lt; relURL "/images/_generated/documentation/getting_started/wizard_token.png" &gt;}}'</code>
 * Links: <code>\<a href="site:hibernate"\></code> &#8594; <code>\<a href="{{&lt; ref hibernate &gt;}}"\></code>
 
 

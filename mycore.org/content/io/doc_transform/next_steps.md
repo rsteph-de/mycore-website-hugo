@@ -31,7 +31,7 @@ Dann beginnt die *Handarbeit* und es gibt kein zurück mehr.
 ### Probleme mit doppelten Anführungszeichen in HTML-Attributen und Hugo ShortCodes.
 
 {{< highlight text "linenos=table">}}
-<img src="{{</* urlRef "/images/_generated/ebers-pap.png" */>}}" title="Papyrus" />
+<img src="{{</* relURL "/images/_generated/ebers-pap.png" */>}}" title="Papyrus" />
 {{< /highlight>}}
  
  - Problem: Hugo kann in Shortcodes nur doppelte Anführungszeichen verwenden. Das beißt sich mit den XML-Attributen.
