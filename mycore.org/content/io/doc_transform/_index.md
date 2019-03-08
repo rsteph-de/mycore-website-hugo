@@ -38,10 +38,14 @@ bei Git PULL „verschluckt sich der Server manchmal“ &#8594; Server neustarte
 Zur automatischen Konvertierung der Forrest-Webseite wurde ein Java-Programm erstellt.
 Es befindet sich als eigenständiges Maven-Projekt im Unterordner <code>forrest_hugo_transformer</code>
 
-### Transformer starten
+### Transformer compilieren und starten
+{{< highlight shell "linenos=table" >}}
+cd ...\mycore-website-hugo\forrest_hugo_transformer
+mvn clean install
+cd target
+java -jar mycore-forrest2hugo.jar c:\workspaces\mycore_website\git\mycore-documentation c:\workspaces\mycore_website\git\mycore-website-hugo
 
-* in Transformer.java Pfade anpassen (<code>BASE_DIR</code>...)
-* Transformer.java ausführen
+{{</ highlight>}}
 
 * löscht im <code>content</code>-Verzeichnis die Ornder <code>de</code> und <code>en</code>, den Ordner 
   <code>/static/images/_generated</code> und die Datei <code>/config/_default/menus.de.yaml</code>.
