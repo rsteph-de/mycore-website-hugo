@@ -14,11 +14,7 @@ public class Transformer {
 	public static Path BASE_DIR_SOURCE = BASE_DIR.resolve("mycore-documentation");
 	public static Path BASE_DIR_TARGET = BASE_DIR.resolve("mycore-website-hugo");
 
-	public static Path P_INPUT = BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
-	public static Path P_OUTPUT_DE = BASE_DIR_TARGET.resolve("mycore.org\\content\\de");
-	public static Path P_OUTPUT_EN = BASE_DIR_TARGET.resolve("mycore.org\\content\\en");
-	public static Path P_OUTPUT_IMAGES = BASE_DIR_TARGET.resolve("mycore.org\\static\\images\\_generated");
-	public static Path P_MENUE = BASE_DIR_TARGET.resolve("mycore.org\\config\\_default\\menus.de.yaml");
+	public static Path P_INPUT, P_OUTPUT_DE,P_OUTPUT_EN,P_OUTPUT_IMAGES,P_MENUE;
 	public static List<Path> IGNORE = Arrays.asList(Paths.get("index.de.xml"), Paths.get("index.en.xml"));
 	public static List<String> IGNORE_REF = Arrays.asList("appdev_2_1", "howtoget", "docportal", "sessions_2_1",
 			"version_2_2", "version_2_1", "news");
@@ -31,6 +27,12 @@ public class Transformer {
 			System.out.println(
 					"You can run the transformer with 2 parameters: java -jar mycore-forrest2hugo <forrest-base-dir> <hugo-base-dir>");
 		}
+		
+		P_INPUT = BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
+		P_OUTPUT_DE = BASE_DIR_TARGET.resolve("mycore.org\\content\\de");
+		P_OUTPUT_EN = BASE_DIR_TARGET.resolve("mycore.org\\content\\en");
+		P_OUTPUT_IMAGES = BASE_DIR_TARGET.resolve("mycore.org\\static\\images\\_generated");
+		P_MENUE = BASE_DIR_TARGET.resolve("mycore.org\\config\\_default\\menus.de.yaml");
 
 		Transformer t = new Transformer();
 		t.run();
