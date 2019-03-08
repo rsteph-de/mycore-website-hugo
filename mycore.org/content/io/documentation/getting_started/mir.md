@@ -69,6 +69,9 @@ Nach Aufruf dieser URL wird der MIR-Wizard gestartet, der wie Abb. 1 zeigt, ein 
 eine UUID - muss dann vollständig kopiert und eingefügt werden. Danach kann die Installation beginnen.
 
 {{< figure src="/images/io/documentation/getting_started/wizard_token.png"  title="MIR-Wizard - Sicherheitsabfrage nach einem Token" width="75%" >}}
+
+{{< mcr-figure class="border border-secondary" src="/images/_generated/documentation/getting_started/wizard_token.png"  caption="MIR-Wizard - Sicherheitsabfrage nach einem Token" count="Abbildung 1:" alt="Tokenabfrage im MIR-Wizard" width="550px" attr="MyCoRe-Community (http://www.mycore.org)" >}}
+
      
 {{< figure src="/images/io/documentation/getting_started/wizard_install_log.png"  title="MIR-Wizard - Token-Logausgabe auf der Shell" width="100%" >}}
 
