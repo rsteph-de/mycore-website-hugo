@@ -11,8 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.rmi.CORBA.Util;
-
 import org.jdom2.CDATA;
 import org.jdom2.Content;
 import org.jdom2.Document;
@@ -245,10 +243,11 @@ public class PageTransformer {
 					preParentE.removeContent(e);
 				}
 
-				if (e.getName().equals("div") && e.getChild("img") != null) {
+				if (e.getName().equals("div") && (e.getChild("img") != null || (e.getChild("center") != null && e.getChild("center") != null))) {
 					createFigure(e, targetSubPath);
 					continue;
 				}
+
 				if (e.getName().equals("img")) {
 					String src = copyImage(e.getAttributeValue("src"), targetSubPath);
 					if(src != null) {
@@ -275,11 +274,18 @@ public class PageTransformer {
 	 * @param targetSubPath
 	 */
 	private void createFigure(Element e, Path targetSubPath) {
-		String src = copyImage(e.getChild("img").getAttributeValue("src"), targetSubPath);
+		String src="";
+		Element eImg = e.getChild("img");
+		if(eImg == null) {
+			eImg = e.getChild("center").getChild("img");
+		}
+		src = copyImage(eImg.getAttributeValue("src"), targetSubPath);
+		
 		String caption = "";
 		String count = "";
 		String alt = "";
 		String width = "";
+		String height= "";
 		e.removeAttribute("style");
 		if (e.getChildText("span") != null) {
 			caption = e.getChildTextNormalize("span");
@@ -291,13 +297,16 @@ public class PageTransformer {
 			}
 		}
 		
-		if (e.getChild("img").getAttributeValue("alt") != null) {
-			alt = e.getChild("img").getAttributeValue("alt").trim();
+		if (eImg.getAttributeValue("alt") != null) {
+			alt = eImg.getAttributeValue("alt").trim();
 		}
-		if (e.getChild("img").getAttributeValue("width") != null) {
-			width = e.getChild("img").getAttributeValue("width").trim();
+		if (eImg.getAttributeValue("width") != null) {
+			width = eImg.getAttributeValue("width").trim();
 		}
-		String figure = "{{< mcr-figure src=\"" + src + "\" class=\"border border-secondary\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
+		if (eImg.getAttributeValue("height") != null) {
+			height = eImg.getAttributeValue("height").trim();
+		}
+		String figure = "{{< mcr-figure src=\"" + src + "\" class=\"border border-secondary\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" height=\"" + height + "\" >}}";
 		e.setContent(new Text(figure));
 	}
 
