@@ -285,6 +285,9 @@ public class PageTransformer {
 			caption = e.getChildTextNormalize("span");
 			if (e.getChild("span").getChildText("strong") != null) {
 				count = e.getChild("span").getChildTextNormalize("strong");
+				if(count.endsWith(":")) {
+					count = count.substring(0, count.length()-1).trim();
+				}
 			}
 		}
 		
@@ -294,7 +297,7 @@ public class PageTransformer {
 		if (e.getChild("img").getAttributeValue("width") != null) {
 			width = e.getChild("img").getAttributeValue("width").trim();
 		}
-		String figure = "{{< mcr-figure src=\"" + src + "\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
+		String figure = "{{< mcr-figure src=\"" + src + "\" class=\"border border-secondary\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" >}}";
 		e.setContent(new Text(figure));
 	}
 
@@ -386,11 +389,11 @@ public class PageTransformer {
 			}
 			if (e.getChild("authors") != null) {
 				String persons = "";
-				writer.append("\nauthors: ");
+				writer.append("\nauthor: ['");
 				for (Element personE : e.getChildren("authors").get(0).getChildren("person")) {
-					persons = persons + personE.getAttributeValue("name") + ", ";
+					persons = persons + personE.getAttributeValue("name") + "', '";
 				}
-				persons = persons.substring(0, persons.length() - 2);
+				persons = persons.substring(0, persons.length() - 3) + "]";
 				writer.append(persons);
 			}
 			if (e.getChild("abstract") != null) {

@@ -1,9 +1,8 @@
-
 ---
 
-title: "Webseiten-Migration: Nächste Schritte"
-authors: 
-date: "2019-03-07"
+title: 	'Webseiten-Migration: Nächste Schritte'
+author: ['Robert Stephan']
+date: 	'2019-03-07'
 
 ---
 ## Migrations(-Zeit-)plan
@@ -39,7 +38,8 @@ Dann beginnt die *Handarbeit* und es gibt kein zurück mehr.
  - Man könnte JDOM erweitern, dass es für die Attribute einfache Anführungszeichen verwendet.
 ([StackOverflow](https://stackoverflow.com/questions/18742412/save-xml-file-with-single-quotes-with-jdom))
 Ob das sinnvoll ist, und ob wir das machen, muss ich mir erst nochmal gründlich überlegen. 
-- Oder man verwendet den **[Hugo-Figure-Shortcode](https://gohugo.io/content-management/shortcodes/#figure)** bzw. schreibt etwas ähnliches selbst.
+- Oder man verwendet den **[Hugo-Figure-Shortcode](https://gohugo.io/content-management/shortcodes/#figure)**
+- <strong>Lösung: </strong>Wir haben JETZT unsereren eigenen Shortcode <strong>&lt;mcr-figure&gt;</strong>
 
 
 ## Anzeige von Source-Code im XML-Format mit <code>&amp;lt;</code> und <code>&amp;gt;</code>

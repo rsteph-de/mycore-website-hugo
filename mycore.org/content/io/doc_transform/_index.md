@@ -2,7 +2,8 @@
 ---
 
 title: "Webseiten-Migration"
-authors: 
+author: ['Robert Stephan', 'Steffen Kasten']
+mcr_version: ['2025.01']
 date: "2019-03-07"
 
 ---
@@ -42,8 +43,7 @@ Es befindet sich als eigenständiges Maven-Projekt im Unterordner <code>forrest_
 {{< highlight shell "linenos=table" >}}
 cd ...\mycore-website-hugo\forrest_hugo_transformer
 mvn clean install
-cd target
-java -jar mycore-forrest2hugo.jar c:\workspaces\mycore_website\git\mycore-documentation c:\workspaces\mycore_website\git\mycore-website-hugo
+java -jar target\mycore-forrest2hugo.jar c:\workspaces\mycore_website\git\mycore-documentation c:\workspaces\mycore_website\git\mycore-website-hugo
 
 {{</ highlight>}}
 
@@ -161,7 +161,7 @@ main:
 
 title: "Systemanforderungen"
 mcr_version: ['2017.06','2018.06']
-authors: Jens Kupferschmidt, Kathleen Neumann
+author: ['Jens Kupferschmidt'], ['Kathleen Neumann']
 description: "
       MyCoRe ist eine betriebssystemunabhängige Java-Anwendung und bringt bereits viele Komponenten mit. Einige
       Voraussetzungen sind jedoch zu schaffen, bevor Sie eine MyCoRe-Anwendung installieren oder an MyCoRe

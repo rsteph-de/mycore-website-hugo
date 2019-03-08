@@ -13,9 +13,8 @@
 	    {{ end }}
 	    </div>
 	    <h1>{{ .Title | markdownify }}</h1>
-
-			
-		    {{ .Content  }}
+		{{ .Content  }}
+	    {{- partial "authors.html" . -}}
 	</div>
 	<div class="col-3">
 		<aside class="mcr-toc pl-5">
