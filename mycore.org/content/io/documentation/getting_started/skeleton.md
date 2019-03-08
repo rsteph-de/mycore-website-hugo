@@ -4,7 +4,7 @@ date: "2015-11-10"
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Mit dem 'Skeleton' zur eigenen Anwendung
 authors: Kathleen Neumann, Wiebke Oeltjen, Robert Stephan
-
+mcr_version: [2017.07]
 ---
 
 Zur Entwicklung einer eigenen MyCoRe-Anwendung stellen wir ein Anwendungsgerüst
@@ -61,7 +61,7 @@ Zur Konfiguration der Datenbank muss die <code>hibernate.cfg.xml</code> im
 [MyCoRe-Konfigurationsverzeichnis]({{< ref "/documentation/getting_started/mcr_properties.md" >}})
 angepasst werden (siehe [Datenbank / Hibernate]({{< ref "/documentation/archiv/version2015/hibernate.md" >}})).
 
-Seit {{<mcr_version "2016.03">}} wird die Datenbank in der
+Seit {{<mcr-version "2016.03">}} wird die Datenbank in der
 <code>persistence.xml</code> unter <code>resources/META-INF</code> konfiguriert.
 
 #### Solr konfigurieren
