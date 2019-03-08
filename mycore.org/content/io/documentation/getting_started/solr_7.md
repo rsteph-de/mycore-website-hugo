@@ -3,7 +3,7 @@
 date: "2018-08-08"
 description: Suche in MyCoRe mit Apache Solr
 title: Suche in MyCoRe mit Apache Solr
-authors: Kathleen Neumann, Jens Kupferschmidt, Robert Stephan
+author: ['Kathleen Neumann', 'Jens Kupferschmidt', 'Robert Stephan']
 
 ---
 

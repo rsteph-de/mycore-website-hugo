@@ -3,7 +3,7 @@
 date: "2018-06-29"
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Konfiguration
-authors: Kathleen Neumann
+author: ['Kathleen Neumann']
 
 mcr_version: ['2017.06','2018.06']
 

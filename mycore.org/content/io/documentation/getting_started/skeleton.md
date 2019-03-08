@@ -3,7 +3,7 @@
 date: "2015-11-10"
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: Mit dem 'Skeleton' zur eigenen Anwendung
-authors: Kathleen Neumann, Wiebke Oeltjen, Robert Stephan
+author: ['Kathleen Neumann', 'Wiebke Oeltjen', 'Robert Stephan']
 mcr_version: [2017.07]
 ---
 

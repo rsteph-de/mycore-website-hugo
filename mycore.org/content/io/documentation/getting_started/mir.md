@@ -3,7 +3,7 @@
 date: "2016-07-19"
 description: beschreibung der wichtigsten MyCoRe Funktionen.
 title: MIR
-authors: Kathleen Neumann
+authors: ['Kathleen Neumann']
 
 ---
 
