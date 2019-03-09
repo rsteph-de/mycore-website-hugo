@@ -13,14 +13,14 @@ Eine MyCoRe-Anwendung sucht dabei nicht direkt in den Daten von Objekten und Dat
 Suchfeldern. Die Abbildung von Metadaten auf Suchfelder erfolgt über eine Konfigurationsdatei. So wird z. B.
 das XML-Element <code>/metadata/titles/title</code> auf ein Suchfeld <code>title</code> abgebildet.
 
-{{< mcr-figure src="/images/io/features/searchfield.png"  title="Auszug aus der Datei searchfields.xml" width="100%" >}}
+{{< mcr-figure src="/images/io/features/searchfield.png"  title="Auszug aus der Datei searchfields.xml" width="100%" />}}
 
 Dabei können auch komplexe Suchanfragen mit booleschen Ausdrücken (und/oder/nicht), Platzhaltern und Suchoperatoren
 gestellt werden. Der Datentyp eines Suchfeldes (ID, Name, Text, Zahl, Datum etc.) bestimmt die bei der Suche
 einsetzbaren Operatoren (z.B. Phrasensuche, Trunkierung, &lt;, &gt;, ...).
 
-{{< mcr-figure src="/images/io/features/searchfield.png"  title="Auszug aus der Datei searchfields.xml" width="100%" >}}
-{{< mcr-figure src="/images/io/features/mcrql.png"  title="Expertensuche mit der MyCoRe-Anfragesprache" width="100%" >}}
+{{< mcr-figure src="/images/io/features/searchfield.png"  title="Auszug aus der Datei searchfields.xml" width="100%" />}}
+{{< mcr-figure src="/images/io/features/mcrql.png"  title="Expertensuche mit der MyCoRe-Anfragesprache" width="100%" />}}
 Die Suche in MyCoRe ist auf Basis von
 [Apache Lucene](http://lucene.apache.org"Apache Lucene Home")
 realisiert. Obwohl auch andere Implementierungen denkbar sind, ist dies
@@ -34,7 +34,7 @@ MyCoRe-Suchmasken sind frei konfigurierbar, von einfachen Ein-Feld-Suchformulare
 Suchmasken bis hin zu frei formulierbaren Experten-Abfragen in der MyCoRe-Query-Language (MCRQL). Suchmasken können
 selbst erstellt oder aus einer Konfiguration von Suchfeldern automatisch generiert werden.
 
-{{< mcr-figure src="/images/io/features/searchmask.png"  title="Beispiel einer Suchmaske" width="100%" >}}
+{{< mcr-figure src="/images/io/features/searchmask.png"  title="Beispiel einer Suchmaske" width="100%" />}}
 
 Trefferlisten sind auf- oder absteigend nach mehreren Feldern beliebig sortierbar. Die ursprüngliche Suche kann angezeigt
 ("Sie haben gesucht nach: ...") oder noch einmal verfeinert werden (Rückkehr zum Suchformular mit Anpassung der

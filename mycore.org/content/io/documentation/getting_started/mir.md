@@ -68,12 +68,12 @@ Nach Aufruf dieser URL wird der MIR-Wizard gestartet, der wie Abb. 1 zeigt, ein 
 (z.B. Tomcat-Log, siehe Abb. 2) befindet. Sucht man im Log nach "Login token", findet man die entsprechende Stelle recht schnell. Das Token -
 eine UUID - muss dann vollständig kopiert und eingefügt werden. Danach kann die Installation beginnen.
 
-{{< mcr-figure src="/images/io/documentation/getting_started/wizard_token.png"  title="MIR-Wizard - Sicherheitsabfrage nach einem Token" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/wizard_token.png"  title="MIR-Wizard - Sicherheitsabfrage nach einem Token" width="75%" />}}
 
-{{< mcr-figure class="border border-secondary" src="/images/_generated/documentation/getting_started/wizard_token.png"  caption="MIR-Wizard - Sicherheitsabfrage nach einem Token" count="Abbildung 1:" alt="Tokenabfrage im MIR-Wizard" width="550px" attr="MyCoRe-Community (http://www.mycore.org)" >}}
+{{< mcr-figure class="border border-secondary" src="/images/_generated/documentation/getting_started/wizard_token.png"  caption="MIR-Wizard - Sicherheitsabfrage nach einem Token" count="Abbildung 1:" alt="Tokenabfrage im MIR-Wizard" width="550px" attr="MyCoRe-Community (http://www.mycore.org)" />}}
 
      
-{{< mcr-figure src="/images/io/documentation/getting_started/wizard_install_log.png"  title="MIR-Wizard - Token-Logausgabe auf der Shell" width="100%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/wizard_install_log.png"  title="MIR-Wizard - Token-Logausgabe auf der Shell" width="100%" />}}
 
 Auf der folgenden Konfigurationsseite des Wizards (Abb. 3) muss nun bekannt gegeben werden, wo der Solr-Kern für die MIR-Anwendung zu finden ist. Läuft Solr im
 gleichen ServletContainer wie die MIR-Anwendung und wird die Default-Einstellung verwendet, muss hier nur ggf. der Port angepasst werden (z.B. auf 8080 bei
@@ -82,7 +82,7 @@ SMTP-Konfiguration versendet die Anwendung Mails bei der Selbstregistrierung um 
 Konfiguration kann auch nachträglich erfolgen. Als Datenbank kann zu Testzwecken ersteinmal H2 oder HSQLDB ausgewählt werden. Für den produktiven Betrieb empfehlen wir
 jedoch keine imRAM-Datenbank zu nutzen.
 
-{{< mcr-figure src="/images/io/documentation/getting_started/wizard_configuration.png"  title="MIR-Wizard - Konfiguration der MIR-Anwendung" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/wizard_configuration.png"  title="MIR-Wizard - Konfiguration der MIR-Anwendung" width="75%" />}}
 
 Anschliessend auf "Speichern" drücken. Nun werden Konfigurationsdateien erzeugt, Datenbanktreiber heruntergeladen, ein Solr-Home mit einem Solr-Kern für die MIR-Anwendung
 angelegt und Klassifikationen, Nutzer und Rechtedaten geladen. Sind alle Schritte auf der nachfolgenden Seite erfolgreich abgeschlossen worden, muss als nächstes der
@@ -149,7 +149,7 @@ und <code>solr</code> als Anwendungen direkt unter localhost:8080. Sollte die ei
    
 ### Aufbau des Konfigurationsverzeichnisses
 
-{{< mcr-figure src="/images/io/documentation/getting_started/mir_configuration.png"  title="MIR-Konfigurationsverzeichnis" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/mir_configuration.png"  title="MIR-Konfigurationsverzeichnis" width="75%" />}}
 
 ### Properties
 <dl>
@@ -168,7 +168,7 @@ hinterlegt. Beim Starten des Servlet-Containers wird der Inhalt dieses Verzeichn
 im Servlet-Container kopiert und somit die default-Inhalte des <code>mir.war</code> überschrieben. Die nachstehende Abbildung
 gibt einen Überblick über typische Anpassungen bei einer eigenen MIR-Anwendung.
 
-{{< mcr-figure src="/images/io/documentation/getting_started/mir_content.png"  title="MIR-Webseitenverzeichnis" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/mir_content.png"  title="MIR-Webseitenverzeichnis" width="75%" />}}
 
 Als Vorlage können dafür die Dateien in den MIR-Komponenten verwendet werden. Dateien, die an der gleichen Stelle liegen (unterhalb von <code>webpages</code>
 == unterhalb von <code>resources</code> in den MIR-Komponenten) und den gleichen Namen haben wie in einer MIR-Komponente werden dann
@@ -184,9 +184,9 @@ Sollten diese Möglichkeiten zur Layoutanpassung nicht genügen, so empfehlen wi
 analog zum mir-flatmir-layout anzulegen. Diese jar-Datei kann dann im mir/libs-Verzeichnis bereitgestellt und über das Property
 <code>MCR.LayoutTransformerFactory.Default.Stylesheets</code> eingebunden werden.
 
-<pre class="brush: shell;gutter: false;">
+{{< highlight cmd "linenos=table" >}}
 MCR.LayoutTransformerFactory.Default.Stylesheets=xsl/mir-myapp-layout.xsl
-</pre>
+{{</highlight>}}
 
 ## Aktivierung der Selbst-Registrierung
 

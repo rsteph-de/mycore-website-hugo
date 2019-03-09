@@ -15,7 +15,7 @@ blog/categories:
 Für das 2018.06 Release habe ich einen neuen Datei Upload entwickelt. Dieser basiert auf der 
 [WebkitEntry](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitEntries#Browser_compatibility) API und wird von Firefox, Chrome und Edge unterstützt. Für alle anderen Browser gibt es einen Fallback.
 
-{{< mcr-figure src="/images/io/blog/mir_receive_mir_mods_00000002.png" title="Uploadbereich"width="100%" >}}
+{{< mcr-figure src="/images/io/blog/mir_receive_mir_mods_00000002.png" title="Uploadbereich"width="100%" />}}
 
 Um den neuen Upload zu benutzen muss man die MyCoRe-Webtools einbinden.
 In die Seite mit dem Upload muss man folgende Skripte einbinden
@@ -28,7 +28,7 @@ In die Seite mit dem Upload muss man folgende Skripte einbinden
 
 Außerdem versucht das Skript aus der globalen Javascript-Variable die Eigenschaft **mycoreUploadSettings** auszulesen, also definiert man diese folgendermaßen:
 
-{{< highlight javascript "linenos=table" >}}
+{{< highlight html "linenos=table" >}}
 <script>
   window["mycoreUploadSettings"] = {
     webAppBaseURL:"<xsl:value-of select='$WebApplicationBaseURL' />"
