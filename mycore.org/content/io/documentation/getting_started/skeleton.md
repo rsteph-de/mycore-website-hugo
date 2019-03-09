@@ -14,6 +14,30 @@ zur Verfügung, das als Einstieg dienen soll.
 
 Das „Skeleton“ ist quasi ein Gerüst zum Erstellen einer eigenen MyCoRe-Anwendung. Diese minimale Webanwendung kann je nach eigenem Bedarf schrittweise um weitere Komponenten und Funktionen erweitert werden. Eigene Anforderungen an das Layout können ebenso einfach realisiert werden, wie Erweiterungen am Datenmodell oder an Klassifikationen. Auch das Rollenmodell lässt sich erweitern und anpassen. Als Vorlage kann die sehr viel umfangreichere Webanwendung „MIR“ verwendet werden. Im Folgenden wird kurz beschrieben, wie das „Skeleton“ verwendet werden kann.
 
+### Embedded Shortcode figure/highlight
+Es folgt ein Versuch, den <code>{{</* highlight */>}}</code> shortcode in <code>{{</* mcr-figure */>}}</code>  zu kapseln
+
+{{< mcr-figure label="Code 1" caption="{{<mcr-figure />}} shortcode with embedded {{<highlight />}} shortcode" width="75%" >}}
+{{< highlight xml "linenos=table" >}}
+<realm id="registerUser" setable="false">
+  <label xml:lang="de">Registrierung</label>
+  <label xml:lang="en">Register</label>
+  <login url="../authorization/new-author.xed" redirectParameter="url">
+    <label xml:lang="de">Neue Benutzerkennung anlegen</label>
+    <label xml:lang="en">Create new User ID</label>
+    <info>
+      <label xml:lang="de">
+        Neuen Benutzer für die Anwendung registrieren.
+      </label>
+      <label xml:lang="en">
+        Register new user for application.
+      </label>
+    </info>
+  </login>
+</realm>
+{{< / highlight >}}
+{{< / mcr-figure >}}
+
 ### Voraussetzungen
 
 Für die Anwendungsentwicklung mit Skeleton benötigen Sie die unter <a href="site:requirements">Systemanforderungen</a>
@@ -120,7 +144,7 @@ Nachdem das Anwendungsskelett eingerichtet und initial gebaut wurde, ist es an d
 genaueren Blick auf die Verzeichnisse und Dateien zu werfen. Um nun ausgehend von diesem
 Anwendungsskelett zur eigenen Anwendung zu kommen, ist es notwendig zu verstehen, wo was steht.
 
-{{< mcr-figure src="/images/io/documentation/getting_started/dir-structure.png"  title="Verzeichnisstruktur des Skeleton-Moduls im Überblick" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/dir-structure.png"  title="Verzeichnisstruktur des Skeleton-Moduls im Überblick" width="75%" />}}
 
 In der nachfolgenden Schritt-für-Schritt-Anleitung wird genauer in die einzelnen Bereiche geschaut.
 Grob kann man jedoch sagen:
@@ -171,7 +195,7 @@ Um eigene Erfasssungsmasken zu erstellen, muss als erstes das HTML-Formular nach
 Dies kann z.B. mit Bootstrap und unter Verwendung des <a href="http://bootsnipp.com/forms?version=3">FormBuilder für Bootstrap 3</a>
 realisiert werden.
 
-{{< mcr-figure src="/images/io/documentation/getting_started/formbuilder.png"  title="Schnell zum Bootstrap-Formular mit dem Formbuilder" width="75%" >}}
+{{< mcr-figure src="/images/io/documentation/getting_started/formbuilder.png"  title="Schnell zum Bootstrap-Formular mit dem Formbuilder" width="75%" />}}
 
 <span class="label label-warning">Achtung:</span> Der Formbuilder setzt <code>name</code>-Attribute für Buttons, Input-Felder, etc.
 Diese kann der XEditor nicht verarbeiten und produziert Fehler. Diese Attribute also bitte unbedingt entfernen!
