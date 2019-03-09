@@ -120,6 +120,9 @@ public class PageTransformer {
 							s = s.replace("{{< ref mir >}}", "{{***TODO*** ref mir ***}}");
 							s = s.replace("{{< ref map >}}", "{{***TODO*** ref map ***}}");
 						}
+						if(s.contains("Ω")) {
+							s = s.replace("Ω",  "").replace("&gt;", ">").replace("&lt;", "<").replace("&nbsp;", " ").replaceAll("&amp;", "&");
+						}
 
 						writer.newLine();
 						writer.write(s);
@@ -232,10 +235,10 @@ public class PageTransformer {
 						Content c2 = e.getContent(0);
 						if (c2 instanceof CDATA) {
 							CDATA cdata = (CDATA) c2.detach();
-							String text = cdata.getText();
+							String text = "Ω" + cdata.getText().replace("\n", "\nΩ");
 							preParentE.addContent(preParentE.getContent().indexOf(e), new Text(text));
 						} else {
-							preParentE.addContent(preParentE.getContent().indexOf(e), c2.detach());
+							preParentE.addContent("Ω").addContent(preParentE.getContent().indexOf(e), c2.detach());
 						}
 
 					}
