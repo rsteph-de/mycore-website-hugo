@@ -285,7 +285,7 @@ public class PageTransformer {
 		src = copyImage(eImg.getAttributeValue("src"), targetSubPath);
 		
 		String caption = "";
-		String count = "";
+		String label = "";
 		String alt = "";
 		String width = "";
 		String height= "";
@@ -293,9 +293,9 @@ public class PageTransformer {
 		if (e.getChildText("span") != null) {
 			caption = e.getChildTextNormalize("span");
 			if (e.getChild("span").getChildText("strong") != null) {
-				count = e.getChild("span").getChildTextNormalize("strong");
-				if(count.endsWith(":")) {
-					count = count.substring(0, count.length()-1).trim();
+				label = e.getChild("span").getChildTextNormalize("strong");
+				if(label.endsWith(":")) {
+					label = label.substring(0, label.length()-1).trim();
 				}
 			}
 		}
@@ -309,7 +309,7 @@ public class PageTransformer {
 		if (eImg.getAttributeValue("height") != null) {
 			height = eImg.getAttributeValue("height").trim();
 		}
-		String figure = "{{< mcr-figure src=\"" + src + "\" class=\"border border-secondary\" caption=\"" + caption + "\" count=\"" + count +"\" alt=\"" + alt + "\" width=\"" + width + "\" height=\"" + height + "\" >}}";
+		String figure = "{{< mcr-figure src=\"" + src + "\" class=\"border border-secondary" + "\" label=\"" + label + "\" caption=\"" + caption  +"\" alt=\"" + alt + "\" width=\"" + width + "\" height=\"" + height + "\" />}}";
 		e.setContent(new Text(figure));
 	}
 
