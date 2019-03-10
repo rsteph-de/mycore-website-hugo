@@ -7,9 +7,15 @@ mcr_version: ['2025.01']
 date: "2019-03-07"
 
 ---
+## "Spielwiese"
+Zum Testen wurde ein Bereich mit der Sprache `io` geschaffen.
+Seiten in diesem Bereich bleiben erhalten und können zum Ausprobieren und ggf. "Probeschreiben" von neuen Texten genutzt werden. 
+
+**Der automatisch Transformationsprozess _löscht_** (noch) alle Seiten unterhalb von `de` und `en`, das Menü `menus.de.yaml` sowie die Image-Dateien im Ordner `images/generated`.
 
 ## Installation
 
+* Hugo **extended** herunterladen und gemäß Anleitung installieren. 
 * Testanwendung auschecken (mit GitURL)
 	* [https://github.com/rsteph-de/mycore-website-hugo.git](https://github.com/rsteph-de/mycore-website-hugo.git)
 * Maven: mvn clean:compile (oder: mvn clean:install)
@@ -18,7 +24,7 @@ date: "2019-03-07"
 
 ### Hugo starten
 
-{{< highlight cmd >}}
+{{< highlight text >}}
 cd …\git\mycore-website-hugo\mycore.org
 …\git\mycore-website-hugo\mycore.org> hugo server
 {{< / highlight >}}

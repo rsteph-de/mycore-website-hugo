@@ -10,8 +10,9 @@ date: 	'2019-03-07'
 
  
 ## Technisches
-- Umzug des Codes in Git von <code>rsteph-de</code> zu "MyCoRe-Org" 
+- Umzug des Codes in Git von `rsteph-de` zu `MyCoRe-Org` 
 	- Branch unter <code>documentation</code> oder eigenes Projekt?
+	- [x] eigenes Projekt: `mycore-website` (wg. des "Systemwechsels") 
 - Automatisches Deployment nach mycore.de
 	- Einrichtung einer Subdomain zum Testen: <code>wwwtest.mycore.de</code>
 	- Bamboo-Konfiguration zum automatischen Deployment
@@ -27,7 +28,7 @@ Dann beginnt die *Handarbeit* und es gibt kein zurück mehr.
 
 ## Was ist zu beachten / Wo sind noch Probleme?
 
-### Probleme mit doppelten Anführungszeichen in HTML-Attributen und Hugo ShortCodes.
+### Probleme mit doppelten Anführungszeichen in HTML-Attributen und Hugo Shortcodes.
 
 {{< highlight text "linenos=table">}}
 <img src="{{</* relURL "/images/_generated/ebers-pap.png" */>}}" title="Papyrus" />
@@ -39,19 +40,19 @@ Dann beginnt die *Handarbeit* und es gibt kein zurück mehr.
 ([StackOverflow](https://stackoverflow.com/questions/18742412/save-xml-file-with-single-quotes-with-jdom))
 Ob das sinnvoll ist, und ob wir das machen, muss ich mir erst nochmal gründlich überlegen. 
 - Oder man verwendet den **[Hugo-Figure-Shortcode](https://gohugo.io/content-management/shortcodes/#figure)**
-- <strong>Lösung: </strong>Wir haben JETZT unsereren eigenen Shortcode <strong>&lt;mcr-figure&gt;</strong>
+- [x] **gelöst:** Wir haben JETZT unsereren eigenen Shortcode <strong>&lt;mcr-figure&gt;</strong>
 
 
 ## Anzeige von Source-Code im XML-Format mit <code>&amp;lt;</code> und <code>&amp;gt;</code>
 - Durch die JDOM-Ausgabe werden die XML-Tags encoded.
-- Keine Idee, ob das lösbar ist.
-- Man könnte versuchen, geparstes XML auszugeben.
+- [x] **gelöst:** Zeilen werden markiert und nach der JDOM-Ausgabe ein zweites Mal prozessiert.
 
 ## Javascript für TOC-Generierung ist buggy
 - Alternative suchen oder selber neu schreiben
 - mit JQuery lässt sich da einiges an Code bereinigen
 - verschiedene Sonderfälle könnten ignoriert werden.
-
+- [x] **gelöst:** `tocbot.js` Framework integriert
+  - mit eigenem Javascript Code werden, wo notwendig, noch @id-Attribute an die &lt;h1&gt;...&lt;h6&gt; Elemente generiert
 
 ## CSS Fine-tuning
  - SCSS / Bootstrap Integration
