@@ -25,7 +25,7 @@ public class Transformer {
 			BASE_DIR_TARGET = Paths.get(args[1]);
 		} else {
 			System.out.println(
-					"You can run the transformer with 2 parameters: java -jar mycore-forrest2hugo <forrest-base-dir> <hugo-base-dir>");
+					"You can run the transformer with 2 parameters: java -jar mycore-forrest2hugo.jar <forrest-base-dir> <hugo-base-dir>");
 		}
 		
 		P_INPUT = BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
