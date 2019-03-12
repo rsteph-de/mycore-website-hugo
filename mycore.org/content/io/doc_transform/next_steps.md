@@ -1,8 +1,8 @@
 ---
 
 title: 	'Webseiten-Migration: Nächste Schritte'
-author: ['Robert Stephan']
-date: 	'2019-03-07'
+author: ['Robert Stephan', 'Kathleen Neumann']
+date: 	'2019-03-12'
 
 ---
 ## Migrations(-Zeit-)plan
@@ -12,10 +12,12 @@ date: 	'2019-03-07'
 ## Technisches
 - Umzug des Codes in Git von `rsteph-de` zu `MyCoRe-Org` 
 	- Branch unter <code>documentation</code> oder eigenes Projekt?
-	- [x] eigenes Projekt: `mycore-website` (wg. des "Systemwechsels") 
+	- eigenes Projekt: `mycore-website` (wg. des "Systemwechsels")
+	- [x] **eingerichtet:** https://github.com/MyCoRe-Org/mycore-website
 - Automatisches Deployment nach mycore.de
 	- Einrichtung einer Subdomain zum Testen: <code>wwwtest.mycore.de</code>
 	- Bamboo-Konfiguration zum automatischen Deployment
+	- alternativ kann GitHub Pages auch Hugo-Seiten hosten, siehe z.B. https://dev.to/dgavlock/creating-a-hugo-site-on-github-pages-3cjo
 
 ## Was ist nach der Migration noch zu tun?
 Zu einem Zeitpunkt <code>X</code> kann das Migrations-Skript letztmalig gestartet werden.

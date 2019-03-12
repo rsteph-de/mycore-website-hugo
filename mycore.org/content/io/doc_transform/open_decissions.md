@@ -1,24 +1,32 @@
 ---
 
 title: 	'Webseiten-Migration: Offene Entscheidungen'
-author: ['Robert Stephan']
-date: 	'2019-03-10'
+author: ['Robert Stephan', 'Kathleen Neumann']
+date: 	'2019-03-12'
 
 ---
-## Blog
-### Hugo vs. Ghost
- - Wollen wir die jetzige Blog-Plattform behalten, oder Hugo auch für das Blog verwenden?
- - **Vorteil Hugo**:  
- 	- alles aus "einem 'Guss" / nur ein System
- 	- Kombination von News / Blog möglich
- - **Vorteil Ghost**: 
-    - Online-Editor
 
 ## Hosting
 ### MyCoRe-Server *oder* Github-Pages
  - siehe [Hugo: Host on Github](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
  - aber: Auch für das Github-Hosting müssen die Seiten erst gebaut und die generierten Seiten hochgeladen werden.
  - deshalb: Kann auch wie bisher die Seite auf dem MyCoRe-Server mit *Bamboo* gebaut und lokal (per Apache) bereitgestellt werden <br />   (Auschecken / `hugo`-Kommando ausführen / in `www`-Ordner kopieren)
+
+## Mehrsprachigkeit
+### Alles übersetzen vs. Fallback vs. kleiner englischer Auftritt
+ - wir haben uns in kleiner Runde dafür entschieden einen kleinen eigenen rein englischen Auftritt anzubieten
+ - es ist zu überlegen, was das vor allem für die Startseite und deren Aktualität bedeutet
+ - genauso Download etc ...
+ - vielleicht können wir hier nochmal recherchieren was Hugo da anbietet
+
+## Blog
+### Hugo vs. Ghost
+ - Wollen wir die jetzige Blog-Plattform behalten, oder Hugo auch für das Blog verwenden?
+ - **Vorteil Hugo**:  
+    - alles aus "einem 'Guss" / nur ein System
+    - Kombination von News / Blog möglich
+ - **Vorteil Ghost**: 
+    - Online-Editor
 
 ## News
 ### Data *oder* Blog
