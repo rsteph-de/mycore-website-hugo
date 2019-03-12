@@ -147,6 +147,13 @@ img.mcr-flag:hover{
 	padding-top:30px;
 }
 
+.mcr-navbar-side h5 a:hover:before {
+  font-family: "Font Awesome\ 5 Free";
+  font-weight: bold;
+  content: "\f104";
+  padding-right: 5px;
+}
+
 .mcr-navbar-side li:not(:first-of-type) h6 {
 	padding-top:15px;
 }
@@ -189,7 +196,6 @@ img.mcr-flag:hover{
   font-family: "Font Awesome\ 5 Free";
   font-weight: bold;
   content: "\f104";
-
 }
 
 .mcr-navbar-side ul > ul > li a.active:before {
