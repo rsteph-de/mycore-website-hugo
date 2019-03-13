@@ -54,18 +54,6 @@
 			  </a>
 			 {{ end }}
 
-			<h5><i class="far fa-newspaper"></i> Aktuelles</h5>
-			{{ with .Site.GetPage "section" "blog" }}
-				<ul class="pl-0" style="list-style-type: none;">
-				  	{{ range first 5 .Pages }}
-        				<li>
-           					 <h6><a class='{{ if eq $currentPage.URL .URL }}active{{ end }}'
-           					        href='{{ .Permalink }}'>{{ .Title }}</a></h6>
-            				<small><time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time></small>
-        				</li>
-    				{{ end }}
-    			</ul>
-			{{ end }}
 		</div>
 	</div>
 </nav>

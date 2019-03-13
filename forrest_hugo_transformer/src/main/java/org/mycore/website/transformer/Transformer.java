@@ -2,6 +2,7 @@ package org.mycore.website.transformer;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -58,6 +59,15 @@ public class Transformer {
 
 			Files.copy(BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\_source\\en._index.html"),
 					BASE_DIR_TARGET.resolve("mycore.org\\content\\en\\_index.html"));
+			
+			Path blogDir = BASE_DIR_TARGET.resolve("mycore.org\\content\\io\\blog");
+			Files.copy(blogDir,	BASE_DIR_TARGET.resolve("mycore.org\\content\\de\\blog"));
+			 try (DirectoryStream<Path> stream = Files.newDirectoryStream(blogDir)) {
+			       for (Path entry: stream) {
+			    	   Files.copy(entry, BASE_DIR_TARGET.resolve("mycore.org\\content\\de\\blog").resolve(entry.getFileName()));
+			       }
+			   }
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -33,6 +33,12 @@ public class MenueTransformer {
 			Document doc = sax.build(P_INPUT.toFile());
 			Element eRoot = doc.getRootElement();
 			runEntries(entries, eRoot, "/");
+			Map <String, Object> blogEntry = new HashMap<>();
+			blogEntry.put("identifier", "blog");
+			blogEntry.put("name", "BLOG");
+			blogEntry.put("weight", -1);
+			blogEntry.put("url", "/blog");
+			entries.add(blogEntry);
 			Yaml yaml = new Yaml();
 			yaml.dump(menue, writer);
 		} catch (JDOMException e) {
