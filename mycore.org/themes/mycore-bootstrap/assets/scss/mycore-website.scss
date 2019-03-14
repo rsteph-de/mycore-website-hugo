@@ -213,6 +213,17 @@ img.mcr-flag:hover{
   content: "\f104";
 }
 
-
+.mcr-navbar-side div.mcr-blog ul {
+  margin-left: 15px;
+}
+.mcr-navbar-side div.mcr-blog li {
+  display: inline;
+  
+}
+.mcr-navbar-side div.mcr-blog a {
+  white-space: nowrap;
+  margin-left: 0em;
+  margin-right: 15px;
+}
 
 @import "../_webjars/bootstrap/4.3.1/scss/bootstrap.scss";
