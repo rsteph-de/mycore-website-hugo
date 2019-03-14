@@ -8,7 +8,7 @@
  		<div>
 			<h5><i class="far fa-newspaper"></i> Aktuelles</h5>
 			{{ with .Site.GetPage "section" "blog" }}
-				<ul class="pl-0" style="list-style-type: none;">
+				<ul class="mcr-blog-latest" style="list-style-type: none;">
 				  	{{ range first 5 .Pages }}
         				<li>
            					 <h6><a class='{{ if eq $currentPage.URL .URL }}active{{ end }}'
