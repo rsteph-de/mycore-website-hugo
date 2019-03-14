@@ -1,5 +1,5 @@
 {{ if .Date}}
-	<span class="badge badge-primary"><i class="fas fa-calendar-alt"></i> {{ .Date.Format "Jan 2, 2006" }} </span>
+	<span class="badge badge-primary"><i class="fas fa-calendar-alt"></i> {{ partial "german_date" (dict "date2convert" (.Date.Format "Jan 2, 2006")) -}} </span>
 {{ end }}
 		
 {{ if isset .Params "blog/authors"}}

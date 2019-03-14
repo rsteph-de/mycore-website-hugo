@@ -19,7 +19,7 @@
     									{{ range first 1 .Pages  }}
     									 <a class='{{ if in $currentPage.URL (print "/" (.Date.Format "2006-01") "/")}}active{{ end }} no-children'
     									     href='{{relLangURL "blog/periods/"}}{{.Date.Format "2006-01"}}'>
-    									  	{{.Date.Format "Jan"}}
+    									  	{{- partial "german_date" (dict "date2convert" (.Date.Format "Jan")) }}
     									  	<span class="badge badge-secondary">{{$count}}</span>
     									  </a>
     									{{ end }}

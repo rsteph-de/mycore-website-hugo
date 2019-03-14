@@ -13,7 +13,8 @@
         				<li>
            					 <h6><a class='{{ if eq $currentPage.URL .URL }}active{{ end }}'
            					        href='{{ .Permalink }}'>{{ .Title }}</a></h6>
-            				<small><time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time></small>
+            				<small><time> {{- partial "german_date" (dict "date2convert" (.Date.Format "Mon, Jan 2, 2006")) -}}</time></small>
+
         				</li>
     				{{ end }}
     			</ul>
