@@ -10,11 +10,13 @@ blog/periods: 2018-12
 blog/categories:
  - News
 blog/tags:
- - "Anwendung"
+ - "Anwendungen"
 
-news/title: "Anwendung"
-news/message: "Die Publikationsplattform der Max Weber Stiftung „perspectivia.net“ basiert nun auf MyCoRe."
-news/image: "sf"
+news/frontpage: true
+news/title_de: "Anwendung"
+news/teaser_de: "Die Publikationsplattform der Max Weber Stiftung „perspectivia.net“ basiert nun auf MyCoRe."
+news/title_en: "Application"
+news/teaser_en: "The publication server of the Max Weber Stiftung perspectivia.net is now based on MyCoRe."
 
 ---
 

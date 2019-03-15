@@ -8,6 +8,8 @@
 {{ end }}
 
 {{ .Content  }}
+{{- partial "front_news.html" . -}}
+
   <script>
   $(document).ready(function() {
       $(".sphereLink").hover(
