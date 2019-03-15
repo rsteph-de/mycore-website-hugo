@@ -222,12 +222,15 @@ public class PageTransformer {
 					replaceSiteByRef(e);
 				}
 				
-				if (e.getName().equals("pre")) {
+				if (e.getName().equals("pre") || e.getName().equals("source")) {
 					Element preParentE = e.getParentElement();
 					String lang = "text";
 					if (e.getAttribute("class") != null) {
 						lang = e.getAttributeValue("class").replace("brush:", "").replaceAll("\\s*gutter:\\s*false", "")
 								.replace(";", "").trim();
+						if(e.getAttributeValue("class").equals("code")) {
+							lang = "xml";
+						}
 					}
 					preParentE.addContent(preParentE.getContent().indexOf(e),
 							new Text("{{< highlight " + lang + " \"linenos=table\">}}"));
