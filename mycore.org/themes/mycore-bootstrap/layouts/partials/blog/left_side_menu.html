@@ -6,7 +6,7 @@
  	</button>
  	<div class="collapse navbar-collapse" id="navbarNavSide">
  		<div class="mcr-blog">
-      		<h5><i class="fas fa-calendar-week pr-2"></i> Kalender</h5>
+      		<h5><i class="fas fa-calendar-week pr-2"></i> {{i18n "blog_calendar"}}</h5>
 			<ul class="mcr-blog-cal">
 				{{ with .Site.GetPage "section" "blog" }}
     				{{ range .Data.Pages.GroupByDate "2006" }}
@@ -31,7 +31,7 @@
    				{{ end }}
 			</ul>
 
-			<h5><i class="fas fa-list-ul pr-2"></i> Kategorien</h5>
+			<h5><i class="fas fa-list-ul pr-2"></i> {{i18n "blog_category"}}</h5>
 			<ul class="mcr-blog-cat">
 			{{/* instead of: 'range .Site.Taxonomies.authors' */}}
 			 {{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/categories"}}
@@ -45,7 +45,7 @@
         	</ul>
 
       	
-			<h5><i class="fas fa-tags pr-2"></i> Tags</h5>
+			<h5><i class="fas fa-tags pr-2"></i> {{i18n "blog_tags"}}</h5>
 			<ul class="mcr-blog-tag">
 			{{ range $taxonomy_term, $taxonomy := index .Site.Taxonomies "blog/tags"}}
 			  <li><a class='{{ if in $currentPage.URL (print "/blog/tags/" (urlize $taxonomy_term) "/")}}active{{ end }} no-children'

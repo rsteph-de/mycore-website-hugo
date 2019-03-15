@@ -6,7 +6,7 @@
  	</button>
  	<div class="collapse navbar-collapse" id="navbarNavSide">
  		<div class="mcr-blog">
-			<h5><i class="far fa-newspaper pr-2"></i> Aktuelles</h5>
+			<h5><i class="far fa-newspaper pr-2"></i> {{i18n "blog_news"}}</h5>
 			{{ with .Site.GetPage "section" "blog" }}
 				<ul class="mcr-blog-latest">
 				  	{{ range first 5 .Pages }}
