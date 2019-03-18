@@ -2,8 +2,8 @@
 	<span class="badge badge-primary"><i class="fas fa-calendar-alt"></i> {{ partial "german_date" (dict "date2convert" (.Date.Format "Jan 2, 2006")) -}} </span>
 {{ end }}
 		
-{{ if isset .Params "blog/authors"}}
-	<span class="badge badge-primary"><i class="fas fa-user"></i> {{ index .Params "blog/authors" }} </span>
+{{ range (index .Params "blog/authors")}}
+	<span class="badge badge-primary"><i class="fas fa-user"></i> {{.}} </span>
 {{ end }}
 	
 {{ if isset .Params "blog/categories"}}

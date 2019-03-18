@@ -7,21 +7,13 @@ pygmentsUseClasses: true
 
 DefaultContentLanguage: de
 languages:
-    io:
-      params:
-        flag: "images/flags/iconcreated_MyCoRe_Construction.png"
-      title: "MyCoRe Webseite Entwurf / Testseite"
-      description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
-      languageName: "Beispielseiten"
-      weight: 1
-      contentDir: content/io
     de:
       params:
         flag: "images/flags/iconfinder_Germany_92095.png"
       title: "MyCoRe Webseite"
       description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
       languageName: "Deutsch"
-      weight: 2
+      weight: 1
       contentDir: content/de
     en:
       params:
@@ -29,8 +21,16 @@ languages:
       title: "MyCoRe Homepage"
       description: "The Framework to present and manage digital contents."
       languageName: "English"
-      weight: 3
+      weight: 2
       contentDir: content/en
+    io:
+      params:
+        flag: "images/flags/iconcreated_MyCoRe_Construction.png"
+      title: "MyCoRe Webseite Entwurf / Testseite"
+      description: "Das Framework zur Pr&auml;sentation und Verwaltung digitaler Inhalte."
+      languageName: "Beispielseiten"
+      weight: 3
+      contentDir: content/io
 
 summaryLength: 37
 

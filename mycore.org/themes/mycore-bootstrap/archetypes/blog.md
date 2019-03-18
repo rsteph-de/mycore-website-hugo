@@ -20,5 +20,6 @@ blog/tags:
 
 ---
 
-<h2>Erster Abschnitt</h2>
-<p>Text...</p>
+## Erster Abschnitt
+
+Text...
