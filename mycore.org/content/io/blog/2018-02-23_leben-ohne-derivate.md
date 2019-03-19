@@ -5,7 +5,7 @@ date: 2018-02-23
 
 draft: false
 
-blog/authors: Thomas Scheffler
+blog/authors: ["Thomas Scheffler"]
 blog/periods: 2018-02
 blog/categories: 
 - HowTo

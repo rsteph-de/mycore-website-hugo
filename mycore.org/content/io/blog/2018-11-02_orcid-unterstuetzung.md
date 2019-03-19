@@ -5,7 +5,7 @@ date: 2018-11-02
 
 draft: false
 
-blog/authors: Wiebke Oeltjen
+blog/authors: ["Wiebke Oeltjen"]
 blog/periods: 2018-11
 blog/categories:
  - News

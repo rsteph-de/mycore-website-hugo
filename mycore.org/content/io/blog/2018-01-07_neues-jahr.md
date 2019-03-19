@@ -5,7 +5,7 @@ date: 2018-01-01
 
 draft: false
 
-blog/authors: Robert Stephan
+blog/authors: ["Robert Stephan"]
 blog/periods: 2018-01
 blog/categories: 
  - News

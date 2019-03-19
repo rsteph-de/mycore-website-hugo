@@ -5,7 +5,7 @@ date: 2018-06-13
 
 draft: false
 
-blog/authors: Sebastian Hofmann
+blog/authors: ["Sebastian Hofmann"]
 blog/periods: 2018-06
 blog/categories: 
 - HowTo
