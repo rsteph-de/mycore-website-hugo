@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Transformer {
-	public static Path BASE_DIR = Paths.get("C:\\workspaces\\mycore\\git");
+	public static Path BASE_DIR = Paths.get("C:\\workspaces\\mycore_website\\git");
 	public static Path BASE_DIR_SOURCE = BASE_DIR.resolve("mycore-documentation");
 	public static Path BASE_DIR_TARGET = BASE_DIR.resolve("mycore-website-hugo");
 
