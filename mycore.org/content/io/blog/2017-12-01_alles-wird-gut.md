@@ -3,7 +3,7 @@ title: "Alles wird gut"
 slug: alles-wird-gut
 date: 2017-12-01
 
-draft: false
+draft: true
 
 blog/authors: ["Robert Stephan", "Max Mustermann"]
 blog/periods: 2017-12
