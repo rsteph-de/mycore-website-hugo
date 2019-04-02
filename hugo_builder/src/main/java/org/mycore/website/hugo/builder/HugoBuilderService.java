@@ -7,6 +7,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.ZonedDateTime;
+import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -14,6 +16,7 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.mycore.website.hugo.builder.model.Status;
 import org.mycore.website.hugo.builder.util.Utilities;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -39,6 +42,9 @@ public class HugoBuilderService {
 
 	@Value("${mcr.hugo_builder.hugo_cmd}")
 	private String hugoCommand;
+	
+	@Value("${mcr.hugo_builder.hugo.baseurl}")
+	private String hugoBaseURL;
 
 	@PostConstruct
 	private void init() {
@@ -46,24 +52,28 @@ public class HugoBuilderService {
 		pWebDir = Paths.get(nameWebDir);
 	}
 
-	public synchronized void run() {
+	public synchronized Status run() {
+		Status status = new Status();
 		try {
 			if (Files.exists(pWorkingDir)) {
 				Utilities.deleteDirectory(pWorkingDir);
 			}
 			Files.createDirectories(pWorkingDir);
 		} catch (IOException e) {
-			LOGGER.error("Error creating ddirectory: " + pWorkingDir);
+			LOGGER.error("Error creating directory: " + pWorkingDir, e);
+			status.getErrors().add("Error creating directory: " + pWorkingDir + "\n" + e.getMessage());
+			status.setSuccessful(false);
 		}
-		gitCheckout();
-		runHugo();
-		publish();
+		gitUnzip(status);
+		runHugo(status);
+		publish(status);
+		status.setCompleted(ZonedDateTime.now().toString());
+		return status;
 	}
 
-	private void gitCheckout() {
+	private void gitUnzip(Status status) {
 		try {
 			URL gitURL = new URL(gitDownloadURL);
-
 			try (ZipInputStream zipIn = new ZipInputStream(gitURL.openStream())) {
 				ZipEntry entry = zipIn.getNextEntry();
 				// iterates over entries in the zip file
@@ -80,47 +90,45 @@ public class HugoBuilderService {
 			}
 		} catch (IOException e) {
 			LOGGER.error("Eror downloading and extracting " + gitDownloadURL, e);
+			status.getErrors().add("Eror downloading and extracting " + gitDownloadURL + "\n" + e.getMessage());
+			status.setSuccessful(false);
 		}
-
 	}
 
-	public void runHugo() {
+	private void runHugo(Status status) {
 		StringBuilder output = new StringBuilder("\n");
 		try {
 			ProcessBuilder processBuilder = new ProcessBuilder();
-			// processBuilder.command("bash", "-c", "ls /home/mkyong/");
-			processBuilder.command(hugoCommand);
+			processBuilder.command(hugoCommand, "-b", hugoBaseURL);
 			processBuilder.directory(pWorkingDir.resolve(projectdirName).resolve("mycore.org").toFile());
-
 			Process process = processBuilder.start();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-
 				String line;
 				while ((line = reader.readLine()) != null) {
 					output.append(line + "\n");
 				}
-
 				int exitVal = process.waitFor();
+				status.setExitCode(exitVal);
 				LOGGER.info(exitVal);
-
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		} catch (IOException | InterruptedException e) {
+			LOGGER.error("Error running Hugo " + e);
+			status.getErrors().add("Error running Hugo \n" + e.getMessage());
+			status.setSuccessful(false);
 		}
-
 		LOGGER.info(output);
+		status.getOutputs().addAll(Arrays.asList((output.toString().split("\n"))));
 	}
 	
-	public void publish() {
+	private void publish(Status status) {
 		try {
 		Utilities.deleteDirectory(pWebDir);
 		Utilities.copyFolder(pWorkingDir.resolve(projectdirName).resolve("mycore.org").resolve("public"), pWebDir);
 		}
 		catch(IOException e) {
 			LOGGER.error("Error copying web files", e);
+			status.getErrors().add("Error copying web files \n" + e.getMessage());
+			status.setSuccessful(false);
 		}
 	}
-
 }
