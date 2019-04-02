@@ -3,19 +3,18 @@ package org.mycore.website.hugo.builder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.annotation.PostConstruct;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.eclipse.jgit.api.CreateBranchCommand;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.lib.Ref;
-import org.mycore.website.hugo.builder.util.Utitlities;
+import org.mycore.website.hugo.builder.util.Utilities;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -26,11 +25,17 @@ public class HugoBuilderService {
 
 	@Value("${mcr.hugo_builder.workingdir}")
 	private String nameWorkingDir;
-
 	private Path pWorkingDir;
+	
+	@Value("${mcr.hugo_builder.webdir}")
+	private String nameWebDir;
+	private Path pWebDir;
 
-	@Value("${mcr.hugo_builder.git_repository}")
-	private String gitURL;
+	@Value("${mcr.hugo_builder.git.download}")
+	private String gitDownloadURL;
+	
+	@Value("${mcr.hugo_builder.projectdir.name}")
+	private String projectdirName;
 
 	@Value("${mcr.hugo_builder.hugo_cmd}")
 	private String hugoCommand;
@@ -38,12 +43,13 @@ public class HugoBuilderService {
 	@PostConstruct
 	private void init() {
 		pWorkingDir = Paths.get(nameWorkingDir);
+		pWebDir = Paths.get(nameWebDir);
 	}
 
 	public synchronized void run() {
 		try {
 			if (Files.exists(pWorkingDir)) {
-				Utitlities.deleteDirectory(pWorkingDir);
+				Utilities.deleteDirectory(pWorkingDir);
 			}
 			Files.createDirectories(pWorkingDir);
 		} catch (IOException e) {
@@ -51,32 +57,40 @@ public class HugoBuilderService {
 		}
 		gitCheckout();
 		runHugo();
+		publish();
 	}
 
 	private void gitCheckout() {
-		try (Git git = Git.cloneRepository().setURI(gitURL).setDirectory(pWorkingDir.toFile()).call()) {
-			Ref ref = git.checkout().setCreateBranch(true).setName("new_hugo")
-					.setUpstreamMode(CreateBranchCommand.SetupUpstreamMode.TRACK).setStartPoint("origin/master").call();
-		} catch (Exception e) {
-			LOGGER.error("Error at Git-Checkout: " + gitURL + "to: " + pWorkingDir, e);
+		try {
+			URL gitURL = new URL(gitDownloadURL);
+
+			try (ZipInputStream zipIn = new ZipInputStream(gitURL.openStream())) {
+				ZipEntry entry = zipIn.getNextEntry();
+				// iterates over entries in the zip file
+				while (entry != null) {
+					Path pTarget = pWorkingDir.resolve(entry.getName());
+					if (!entry.isDirectory()) {
+						Files.copy(zipIn, pTarget);
+					} else {
+						Files.createDirectories(pTarget);
+					}
+					zipIn.closeEntry();
+					entry = zipIn.getNextEntry();
+				}
+			}
+		} catch (IOException e) {
+			LOGGER.error("Eror downloading and extracting " + gitDownloadURL, e);
 		}
+
 	}
 
 	public void runHugo() {
 		StringBuilder output = new StringBuilder("\n");
 		try {
-		ProcessBuilder pbMvn = new ProcessBuilder();
-		pbMvn.command("\"C:\\Program Files\\apache-maven-3.3.9\\bin\\mvn.cmd\"", "clean install");
-		pbMvn.directory(pWorkingDir.toFile());
-		Process pMvn = pbMvn.start();
-		int mvnExit = pMvn.waitFor();
-		LOGGER.info("Maven exit code: "+mvnExit);
-		
-		ProcessBuilder processBuilder = new ProcessBuilder();
-		// processBuilder.command("bash", "-c", "ls /home/mkyong/");
-		processBuilder.command(hugoCommand);
-		processBuilder.directory(pWorkingDir.resolve("mycore.org").toFile());
-
+			ProcessBuilder processBuilder = new ProcessBuilder();
+			// processBuilder.command("bash", "-c", "ls /home/mkyong/");
+			processBuilder.command(hugoCommand);
+			processBuilder.directory(pWorkingDir.resolve(projectdirName).resolve("mycore.org").toFile());
 
 			Process process = processBuilder.start();
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
@@ -97,7 +111,16 @@ public class HugoBuilderService {
 		}
 
 		LOGGER.info(output);
-
+	}
+	
+	public void publish() {
+		try {
+		Utilities.deleteDirectory(pWebDir);
+		Utilities.copyFolder(pWorkingDir.resolve(projectdirName).resolve("mycore.org").resolve("public"), pWebDir);
+		}
+		catch(IOException e) {
+			LOGGER.error("Error copying web files", e);
+		}
 	}
 
 }

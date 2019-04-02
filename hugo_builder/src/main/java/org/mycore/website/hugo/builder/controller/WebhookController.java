@@ -33,7 +33,7 @@ public class WebhookController {
 	
 	private static Logger logger = LoggerFactory.getLogger(WebhookController.class);
 	
-	@PostMapping("/rebuild")
+	@PostMapping("/git-webhook")
 	public String rebuildWebsite(@RequestHeader(value="X-GitHub-Event") String gitEvent,
 								 @RequestHeader(value="X-GitHub-Delivery") String gitDelivery,
 								 @RequestHeader(value="X-Hub-Signature") String signature,
