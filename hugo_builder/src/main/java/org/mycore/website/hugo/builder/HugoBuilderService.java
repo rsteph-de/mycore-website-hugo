@@ -18,6 +18,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mycore.website.hugo.builder.model.Status;
 import org.mycore.website.hugo.builder.util.Utilities;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ import org.springframework.stereotype.Service;
 public class HugoBuilderService {
 
 	public static Log LOGGER = LogFactory.getLog(HugoBuilderService.class);
+	
+	@Autowired
+	HugoBuilderDataStore builderData;
 
 	@Value("${mcr.hugo_builder.workingdir}")
 	private String nameWorkingDir;
@@ -68,6 +72,8 @@ public class HugoBuilderService {
 		runHugo(status);
 		publish(status);
 		status.setCompleted(ZonedDateTime.now().toString());
+		builderData.pushStatus(status);
+		
 		return status;
 	}
 

@@ -349,14 +349,14 @@ public class PageTransformer {
 				Files.copy(pImageOld.resolve(src),
 						Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 						StandardCopyOption.REPLACE_EXISTING);
-				return "/images/_generated/" + imageFolder + filename;
+				return "/images/" + imageFolder + filename;
 
 			}
 			if (Files.exists(pImageOld2.resolve(src))) {
 				Files.copy(pImageOld2.resolve(src),
 						Transformer.P_OUTPUT_IMAGES.resolve(imageFolder + filename),
 						StandardCopyOption.REPLACE_EXISTING);
-				return "/images/_generated/" + imageFolder + filename;
+				return "/images/" + imageFolder + filename;
 			}
 			
 			System.err.println("Bild nicht gefunden! " + src);

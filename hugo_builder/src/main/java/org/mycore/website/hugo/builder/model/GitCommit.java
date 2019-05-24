@@ -1,7 +1,9 @@
 package org.mycore.website.hugo.builder.model;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.google.gson.JsonObject;
 
@@ -15,6 +17,15 @@ public class GitCommit {
 	private List<String> added = new ArrayList<>();
 	private List<String> removed = new ArrayList<>();
 	private List<String> modified = new ArrayList<>();
+	
+	public GitCommit() {
+		id = UUID.randomUUID().toString();
+		message = "Build invoked by Hugo Builder /run";
+		timestamp = ZonedDateTime.now().toString();
+		url="";
+		author = "hugo_builder";
+		committer = "hugo_builder";
+	}
 	
 	public GitCommit(JsonObject json) {
 		id = json.get("id").getAsString();

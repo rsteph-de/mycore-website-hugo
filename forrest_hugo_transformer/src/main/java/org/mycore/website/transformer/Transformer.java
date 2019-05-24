@@ -11,9 +11,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Transformer {
-	public static Path BASE_DIR = Paths.get("C:\\workspaces\\mycore_website\\git");
-	public static Path BASE_DIR_SOURCE = BASE_DIR.resolve("mycore-documentation");
-	public static Path BASE_DIR_TARGET = BASE_DIR.resolve("mycore-website-hugo");
+	public static Path BASE_DIR = Paths.get("C:\\workspaces\\mycore-hugo\\git");
+	public static Path BASE_DIR_SOURCE = BASE_DIR.resolve("documentation-forrest");
+	public static Path BASE_DIR_TARGET = BASE_DIR.resolve("rsteph-mycore-website");
 
 	public static Path P_INPUT, P_OUTPUT_DE,P_OUTPUT_EN,P_OUTPUT_IMAGES,P_MENUE;
 	public static List<Path> IGNORE = Arrays.asList(Paths.get("index.de.xml"), Paths.get("index.en.xml"));
@@ -32,7 +32,7 @@ public class Transformer {
 		P_INPUT = BASE_DIR_SOURCE.resolve("src\\documentation\\content\\xdocs");
 		P_OUTPUT_DE = BASE_DIR_TARGET.resolve("mycore.org\\content\\de");
 		P_OUTPUT_EN = BASE_DIR_TARGET.resolve("mycore.org\\content\\en");
-		P_OUTPUT_IMAGES = BASE_DIR_TARGET.resolve("mycore.org\\static\\images\\_generated");
+		P_OUTPUT_IMAGES = BASE_DIR_TARGET.resolve("mycore.org\\static\\images");
 		P_MENUE = BASE_DIR_TARGET.resolve("mycore.org\\config\\_default\\menus.de.yaml");
 
 		Transformer t = new Transformer();

@@ -6,6 +6,7 @@ import java.util.List;
 public class Status {
 
 	private String completed;
+	private String message;
 	private boolean successful = true;
 	private List<String> outputs = new ArrayList<String>();
 	private int exitCode;
@@ -39,5 +40,11 @@ public class Status {
 	}
 	public void setCompleted(String completed) {
 		this.completed = completed;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
